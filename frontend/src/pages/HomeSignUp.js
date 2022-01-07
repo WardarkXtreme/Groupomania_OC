@@ -36,8 +36,16 @@ const HomeSignIn = () => {
                     placeholder="Votre pseudonyme"
                     autoComplete="off"/>
                 </form>
-                <div className="random_img"></div>
                 <button className="btnConnection">S'inscrire</button>
+            </div>
+            <div className="reseauLink">
+                <p>Suivre Groupomania</p>
+                <div className="properties__reseauLink">
+                    <a href="https://www.twitter.com/"><img className="properties_pic" src="./img/twitter.png" alt="twitter"/></a>
+                    <a href="https://www.facebook.com/"><img className="properties_pic" src="./img/facebook.png" alt="facebook"/></a>
+                    <a href="https://www.instagram.com/"><img className="properties_pic" src="./img/instagram.png" alt="instagram"/></a>
+                    <a href="https://www.linkedin.com/"><img className="properties_pic" src="./img/linkedin.png" alt="linkedin"/></a>
+                </div>   
             </div>
         </div>  
     );

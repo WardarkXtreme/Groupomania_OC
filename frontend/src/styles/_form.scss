@@ -11,27 +11,32 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    animation: appear 1.5s ease-out;
+    animation-iteration-count: 1; 
     .navigation {
         display: flex;
         width: 400px;
         justify-content: space-around;
         a {
+            text-decoration: none;
             margin-bottom: 20px;
             font-size: 40px;
             font-family: $font-1;
-            text-decoration: none;
-        }       
+            &:visited{
+                text-decoration: none;
+                color: black;
+            }
+        }     
     }
     .signin:active {
         animation: turnRight;
-        
     }
     .signup:active {
         animation: turnRight;
     }
     .connectionForm {
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         input {
             height: 50px;
             width: 400px;

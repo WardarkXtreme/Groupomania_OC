@@ -25,6 +25,15 @@ const HomeSignIn = () => {
                 </form>
                 <button className="btnConnection">Se Connecter</button>
             </div>
+            <div className="reseauLink">
+                <p>Suivre Groupomania</p>
+                <div className="properties__reseauLink">
+                    <a href="https://www.twitter.com/" className="properties_pic"><img className="properties_pic" src="./img/twitter.png" alt="twitter"/></a>
+                    <a href="https://www.facebook.com/" className="properties_pic"><img className="properties_pic" src="./img/facebook.png" alt="facebook"/></a>
+                    <a href="https://www.instagram.com/" className="properties_pic"><img className="properties_pic" src="./img/instagram.png" alt="instagram"/></a>
+                    <a href="https://www.linkedin.com/" className="properties_pic"><img className="properties_pic" src="./img/linkedin.png" alt="linkedin"/></a>
+                </div>   
+            </div>
         </div>  
     );
 };
