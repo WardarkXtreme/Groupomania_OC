@@ -1,5 +1,11 @@
 @import "./settings";
 
+@keyframes turnRight {
+    from{transform: rotate(0deg);}
+    to{transform: rotate(180deg);}   
+}
+
+
 .home {   
     .logo {
         position: absolute;
@@ -8,6 +14,8 @@
         height: 250px;
         width: 250px;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        animation: turnRight 1s ease-out ;
+        animation-iteration-count: 1;
     }
     .vectorOne {
         display: flex;
@@ -26,5 +34,17 @@
         background-color: $color-2;
         filter: blur(9px);
         
+    }
+    h1 {
+        position: absolute;
+        display: flex;
+        height: 160px;
+        width: 500px;
+        align-items: flex-end;
+        justify-content: flex-end;
+        font-size: 50px;
+        font-family: $font-1;
+        font-style: italic;
+        color: $color-1;
     }
 };
