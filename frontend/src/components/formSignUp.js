@@ -35,6 +35,7 @@ function FormSignUp(){
         })
         .catch(error=>{
             console.log(error)
+            empty();
         })
     }
     function handle(e){
@@ -48,11 +49,11 @@ function FormSignUp(){
         <div className="login">
             <Navigation />
             <form onSubmit={(e)=>submit(e)} className="connectionForm">
-                <input onChange={(e)=>handle(e)} value={data.email} required="true" type="mail" id="email" name="email" placeholder="Votre email"/>
-                <input onChange={(e)=>handle(e)} value={data.lastName} required="true" type="text" id="lastName" name="lastName" placeholder="Votre prénom"/>
-                <input onChange={(e)=>handle(e)} value={data.firstName} required="true" type="text" id="firstName" name="firstName" placeholder="Votre nom"/>
-                <input onChange={(e)=>handle(e)} value={data.password} required="true" type="password" id="password" name="password" placeholder="Votre mot de passe"/>
-                <input onChange={(e)=>handle(e)} value={data.pseudo} required="true" type="text" id="pseudo" name="pseudo" placeholder="Votre pseudonyme"/>
+                <input onChange={(e)=>handle(e)} value={data.email} required={true} type="mail" id="email" name="email" placeholder="Votre email"/>
+                <input onChange={(e)=>handle(e)} value={data.lastName} required={true} type="text" id="lastName" name="lastName" placeholder="Votre prénom"/>
+                <input onChange={(e)=>handle(e)} value={data.firstName} required={true} type="text" id="firstName" name="firstName" placeholder="Votre nom"/>
+                <input onChange={(e)=>handle(e)} value={data.password} required={true} type="password" id="password" name="password" placeholder="Votre mot de passe"/>
+                <input onChange={(e)=>handle(e)} value={data.pseudo} required={true} type="text" id="pseudo" name="pseudo" placeholder="Votre pseudonyme"/>
                 <button className="btnConnection">S'inscrire</button>
             </form>
         </div>

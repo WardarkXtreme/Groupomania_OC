@@ -1,4 +1,4 @@
-import FormSignUp from "../components/formSignUp";
+import FormSignUp from "../components/FormSignUp";
 
 const HomeSignIn = () => {
     return (
