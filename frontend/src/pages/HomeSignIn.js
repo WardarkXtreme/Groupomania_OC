@@ -22,8 +22,8 @@ const HomeSignIn = () => {
                     name="password"
                     placeholder="Votre password ici"
                     autoComplete="off"/>
+                    <button className="btnInscription">Se Connecter</button>
                 </form>
-                <button className="btnConnection">Se Connecter</button>
             </div>
             <div className="reseauLink">
                 <p>Suivre Groupomania</p>

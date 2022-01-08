@@ -1,5 +1,4 @@
-import { NavLink } from "react-router-dom";
-import Navigation from "../components/Navigation";
+import FormSignUp from "../components/formSignUp";
 
 const HomeSignIn = () => {
     return (
@@ -8,36 +7,7 @@ const HomeSignIn = () => {
             <div className="vectorTwo"></div>
             <div className="logo"><img src="./img/logo.png" alt="logo-Groupomania"/></div>
             <h1>Groupomania</h1>
-            <div className="login">
-                <Navigation />
-                <form className="connectionForm">
-                    <input
-                    type="mail"
-                    id="email"
-                    name="email"
-                    placeholder="Votre email ici"
-                    autoComplete="off"/>
-                    <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    placeholder="Votre mot de passe"
-                    autoComplete="off"/>
-                    <input
-                    type="password"
-                    id="comparePassword"
-                    name="password"
-                    placeholder="Répétez votre mot de passe"
-                    autoComplete="off"/>
-                    <input
-                    type="text"
-                    id="pseudo"
-                    name="pseudo"
-                    placeholder="Votre pseudonyme"
-                    autoComplete="off"/>
-                </form>
-                <button className="btnConnection">S'inscrire</button>
-            </div>
+            <FormSignUp />
             <div className="reseauLink">
                 <p>Suivre Groupomania</p>
                 <div className="properties__reseauLink">

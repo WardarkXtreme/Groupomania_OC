@@ -37,6 +37,7 @@
     .connectionForm {
         display: flex;
         flex-direction: column;
+        align-items: center;
         input {
             height: 50px;
             width: 400px;
@@ -48,6 +49,21 @@
             background-color: $color-4;
             box-shadow: inset 0px 2px 2px;
         }
+        .btnConnection, .btnInscription {
+            height: 50px;
+            width: 400px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 30px;
+            border-radius: 15px;
+            border: none;
+            background-color: $color-1;
+            font-family: $font-1;
+            filter: drop-shadow(3px 4px 3px rgba(0, 0, 0, 0.486));
+            &:active {
+                filter: drop-shadow(1px 1px 1px rgba(23, 62, 99, 0.808));
+            }
+        }
     }
     .random_img {
         display: flex;
@@ -57,19 +73,5 @@
         border-radius: 50%;
         margin: 30px 0px 30px 0px;
     }
-    .btnConnection {
-        height: 50px;
-        margin: 10px;
-        width: 400px;
-        background-color: $color-1;
-        filter: drop-shadow(3px 4px 3px rgba(0, 0, 0, 0.486));
-        border-radius: 15px;
-        border: none;
-        text-align: center;
-        font-size: 30px;
-        font-family: $font-1;
-        &:active {
-            filter: drop-shadow(1px 1px 1px rgba(23, 62, 99, 0.808));
-        }
-    }
+    
 }
