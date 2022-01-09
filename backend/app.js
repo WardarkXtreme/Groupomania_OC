@@ -18,11 +18,5 @@ app.use(bodyParser.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/auth", publicationRoutes);
 
-let date;
-date = new Date();
-let jma = date.toLocaleDateString().replace(/[/]/g, ":");
-let hms = date.toLocaleTimeString()
-date = (hms  + " " + jma  );
-;console.log(date)
 
 module.exports = app;
