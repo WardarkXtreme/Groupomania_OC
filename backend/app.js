@@ -3,6 +3,7 @@ require('./db-Connect/dbConnect.js');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user.route');
 const publicationRoutes = require('./routes/publication.route');
+const commentRoutes = require("./routes/comment.route");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 
 app.use("/api/auth", userRoutes);
 app.use("/api/auth", publicationRoutes);
+app.use("/api/auth", commentRoutes)
 
 
 module.exports = app;

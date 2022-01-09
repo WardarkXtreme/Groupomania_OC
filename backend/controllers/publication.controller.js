@@ -1,6 +1,5 @@
 const connectDb = require("../db-Connect/dbConnect.js");
 const Publication = require("../models/publication.model");
-const User = require("../models/user.model.js");
 
 //Fonction pour nouvelle publication
 
