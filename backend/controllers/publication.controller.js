@@ -51,11 +51,11 @@ exports.deletePublication = (req, res) => {
 
 exports.getAllPublication = (req, res) => {
     let sql = `SELECT * FROM publication INNER JOIN user ON publication.userID`;
-    connectDb.query(sql, function(err, result) {
+    connectDb.query(sql, function(err, data) {
         if (err) {
             return res.status(400).json(err);
         }
-        res.status(200).json(result);
+        res.send(data);
     })
 
 };

@@ -4,22 +4,22 @@ import { createElement } from "react";
 function displayAllPublication() {
     const url ="http://localhost:3000/api/auth/allPublication";
     axios.get(url)
-    .then((dataPublication) => {
-        dataPublication.data.forEach(publication => {
-            console.log(dataPublication.data)
-            displayPublication(document.getElementsByClassName("allPublication"), publication);
+    .then((dataPublications) => {
+        dataPublications.data.forEach(publication => {
+            displayPublication(document.getElementById("container"), publication);
         })
     })
-    .catch(err=> {console.log(err)})
+    .catch(err => {console.log(err)});
     function displayPublication(container, publication) {
+
         //------création des contenant html-------//
-        const groupe = document.createElement("div")
-        const title = document.createElement("p")
-        const firstName = document.createElement("p")
-        const lastName = document.createElement("p")
-        const pseudo = document.createElement("p")
-        const publicationPicture = createElement("p")
-        const article = document.createElement("p")
+        const groupe = document.createElement('div')
+        const title = document.createElement('p')
+        const firstName = document.createElement('p')
+        const lastName = document.createElement('p')
+        const pseudo = document.createElement('p')
+        const publicationPicture = document.createElement('p')
+        const article = document.createElement('p')
 
         //------indication des contenus aux contenants-------//
         groupe.appendChild(title)
@@ -45,9 +45,11 @@ function displayAllPublication() {
         publicationPicture.setAttribute("className", "publicationPicture")
         article.innerHTML = publication.article
         article.setAttribute("className", "publicationArticle")
-    }
+    };
     return (
-        <div className="allPublication"></div>
+        <div id="container">
+
+        </div>
     )
 }
 
