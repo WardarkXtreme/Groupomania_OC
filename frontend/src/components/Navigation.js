@@ -5,10 +5,10 @@ const Navigation = () => {
     return (
         <div className="navigation">
             <NavLink className="signin" exact="true" to="/">
-                Signin
+                Connexion
             </NavLink>
             <NavLink className="/signup" exact="true" to="/Signup">
-                Signup
+                Inscription
             </NavLink>
         </div>
     );

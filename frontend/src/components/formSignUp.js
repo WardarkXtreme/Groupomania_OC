@@ -29,9 +29,8 @@ function FormSignUp(){
             pseudo: data.pseudo
         })
         .then(res=>{
-            empty();
-            window.confirm("sometext");
-            // window.alert("Félicitation, votre inscription c'est Effectuée avec succés !");
+            window.alert("Inscription réalisé avec succés, veuillez vous connecter")
+            window.location = "/";
         })
         .catch(error=>{
             console.log(error)
