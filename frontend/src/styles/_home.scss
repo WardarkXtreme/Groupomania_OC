@@ -1,6 +1,7 @@
 @import "./settings";
 
-.home {   
+.home { 
+    background: black;  
     .logo {
         position: absolute;
         display: flex;
@@ -29,7 +30,7 @@
         filter: blur(9px);
         
     }
-    h1 {
+    .titleForm {
         position: absolute;
         display: flex;
         height: 160px;

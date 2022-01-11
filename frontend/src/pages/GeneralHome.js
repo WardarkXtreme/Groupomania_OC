@@ -3,7 +3,7 @@ import HomeMain from "../components/HomeMain"
 
 const GeneralHome = () => {
     return (
-        <div>
+        <div className="generalClass">
             <HomeMain/>
         </div>
     )

@@ -23,24 +23,11 @@ $color-4: #EEEAEA;
         transform:scale(1);
     }
 }
-@keyframes underlineSwitchRight {
-    0%{
-        margin-left: 0;
-    }
-    100%{
-        margin-left: 66%;
-    }
-}
-@keyframes underlineSwitchLeft {
-    0%{
-        margin-left: 66%;
-    }
-    100%{
-        margin-left: 0%;
-    }
-}
 
 body{
+    display: flex;
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     #root {

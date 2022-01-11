@@ -6,7 +6,7 @@ const HomeSignIn = () => {
             <div className="vectorOne"></div>
             <div className="vectorTwo"></div>
             <div className="logo"><img src="./img/logo.png" alt="logo-Groupomania"/></div>
-            <h1>Groupomania</h1>
+            <h1 className="titleForm">Groupomania</h1>
             <FormSignIn />
             <div className="reseauLink">
                 <p>Suivre Groupomania</p>
