@@ -50,14 +50,13 @@ exports.deletePublication = (req, res) => {
 //fonction pour afficher toutes les publications
 
 exports.getAllPublication = (req, res) => {
-    let sql = `SELECT * FROM publication INNER JOIN user ON publication.userID`;
+    let sql = "SELECT publicationID, publication.userID, publication.createdOn, title, article, firstName, lastName, pseudo, publicationPicture FROM publication INNER JOIN user ON publication.userID = user.userID";
     connectDb.query(sql, function(err, data) {
         if (err) {
             return res.status(400).json(err);
         }
-        res.send(data);
-    })
-
+        res.status(200).json(data);
+    });
 };
 
 // fonction pour afficher une seule publication

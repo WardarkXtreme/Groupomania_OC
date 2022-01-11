@@ -1,11 +1,11 @@
 import axios from "axios";
-import { createElement } from "react";
 
 function displayAllPublication() {
     const url ="http://localhost:3000/api/auth/allPublication";
     axios.get(url)
-    .then((dataPublications) => {
-        dataPublications.data.forEach(publication => {
+    .then((dataPublication) => {
+        console.log(dataPublication.data)
+        dataPublication.data.forEach(publication => {
             displayPublication(document.getElementById("container"), publication);
         })
     })
@@ -18,7 +18,7 @@ function displayAllPublication() {
         const firstName = document.createElement('p')
         const lastName = document.createElement('p')
         const pseudo = document.createElement('p')
-        const publicationPicture = document.createElement('p')
+        const publicationPicture = document.createElement('img')
         const article = document.createElement('p')
 
         //------indication des contenus aux contenants-------//
@@ -41,16 +41,15 @@ function displayAllPublication() {
         lastName.setAttribute("className", "publicationLastName")
         pseudo.innerHTML = publication.pseudo
         pseudo.setAttribute("className", "publicationPseudo")
-        publicationPicture.innerHTML = publication.publicationPicture
+        publicationPicture.src = publication.publicationPicture
         publicationPicture.setAttribute("className", "publicationPicture")
         article.innerHTML = publication.article
         article.setAttribute("className", "publicationArticle")
     };
-    return (
-        <div id="container">
 
-        </div>
-    )
-}
+    return (
+        <div id="container"></div>
+    );
+};
 
 export default displayAllPublication;
