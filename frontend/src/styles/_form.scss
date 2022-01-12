@@ -2,16 +2,13 @@
 
 
 .login {
-    position: absolute;
     display: flex;
     justify-content: center;
     width: 100%;
     height: 100%;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    animation: appear 1s ease-out;
+    animation: appear 800ms linear;
     animation-iteration-count: 1; 
     .navigation {
         display: inline-flex;
@@ -26,7 +23,7 @@
             width: 50%;
             &:visited{
                 text-decoration: none;
-                color: black;
+                color: $color-1;
             }
         } 
         a:nth-child(2){
@@ -46,37 +43,35 @@
         input {
             height: 50px;
             width: 400px;
-            margin: 20px;
+            margin: 10px;
             text-align: center;
             font-size: 30px;
             border-radius: 15px;
-            border: none;
-            background-color: $color-4;
-            box-shadow: inset 0px 2px 2px;
+            border: solid black 1px;
+            box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+            &:hover{
+                filter: drop-shadow(0 1vh 1vh lightblue);
+            }
         }
         .btnConnection, .btnInscription {
             height: 50px;
             width: 400px;
-            margin-top: 20px;
+            margin-top: 40px;
             text-align: center;
             font-size: 30px;
             border-radius: 15px;
-            border: none;
             background-color: $color-1;
             font-family: $font-1;
-            filter: drop-shadow(3px 4px 3px rgba(0, 0, 0, 0.486));
+            transform:translate3d(0px, -5px, 0px);
+            box-shadow: 0px 3px 2px 2px black;
+            transition: 300ms;
+            cursor:pointer;
             &:active {
-                filter: drop-shadow(1px 1px 1px rgba(23, 62, 99, 0.808));
+                transform:translate3d(0px, 0px, 0px);
+                box-shadow: none;
+                border: none;
             }
         }
-    }
-    .random_img {
-        display: flex;
-        width: 200px;
-        height: 200px;
-        background-color: black;
-        border-radius: 50%;
-        margin: 30px 0px 30px 0px;
     }
     
 }

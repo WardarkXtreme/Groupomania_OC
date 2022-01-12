@@ -4,10 +4,13 @@ const HomeSignIn = () => {
     return (
         <div className="home">
             <div className="vectorOne"></div>
-            <div className="vectorTwo"></div>
             <div className="logo"><img src="./img/logo.png" alt="logo-Groupomania"/></div>
             <h1 className="titleForm">Groupomania</h1>
-            <FormSignUp />
+            <div className="centerForm">
+                <div className="vectorTwo">
+                    <FormSignUp />
+                </div>
+            </div> 
             <div className="reseauLink">
                 <p>Suivre Groupomania</p>
                 <div className="properties__reseauLink">
