@@ -51,16 +51,10 @@ function displayPublication(container, publication) {
 };
 
 function displayAllPublication(){
-    getAllPublication()
+    getAllPublication();
     return (
         <div className="home">
             <Header />
-            <div className="menu">
-                <ul>
-                    <li>Créer une publication</li>
-                    <li>Voir mon profil</li>
-                </ul>
-            </div>
             <div id="container"></div>
         </div>
     );

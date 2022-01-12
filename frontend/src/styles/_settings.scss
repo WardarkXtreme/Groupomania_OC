@@ -38,4 +38,24 @@ body{
         padding: 0;
     };
 };
-    
+
+@keyframes anim {
+    from{
+        visibility: hidden;
+        left: -300px;
+    }
+    to{
+        visibility: visible;
+        left: 0;
+    }
+}
+@keyframes changeBack {
+    from{
+        transform: rotate(0deg);
+        background-image: url(./img/openmenu.png);
+    }
+    to {
+        transform: rotate(360deg);
+        background-image: url(./img/close.png);
+    }
+}
