@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const publicationCtrl = require("../controllers/publication.controller");
-const auth = require('../middleware/auth');
 
 //Requête POST pour nuovelle publication
 router.post("/createPublication", publicationCtrl.createPublication); 

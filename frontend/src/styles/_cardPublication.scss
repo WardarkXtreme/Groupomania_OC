@@ -28,18 +28,41 @@
 .createPublication {
     display: flex;
     width: 100%;
+    margin: 50px 0;
+    height: auto;
+    min-height: 200px;
     justify-content: center;
-    display: none;
     .publicationGroupe {
         background-color: rgb(63, 63, 63);
         border-radius: 20px;
         width: 700px;
-        margin: 50px 0px;
+        height: 100%;
         filter: drop-shadow(0 0 1vh lightblue);
-        .publicationPicture{
-            display: flex;
+        .publicationForm {
             width: 100%;
-            filter: drop-shadow(0 0 1vh $color-1);
-        }
+            #title {
+                width: 140px;
+                border-radius: 10px;
+                border: none;
+                height: 30px;
+                margin: 20px 0 20px 20px;
+            }
+            #publicationPicture {
+                display: flex;
+                width: 99%;
+                filter: drop-shadow(0 0 1vh $color-1);
+            }
+            #article {
+                width: 99%;
+                
+            }
+            #previewPic{
+                display: flex;
+                object-fit: contain;
+
+                width: 100%;
+                filter: drop-shadow(0 0 1vh $color-1);
+            }
+        }     
     }
 }

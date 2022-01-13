@@ -14,7 +14,7 @@ exports.createPublication = (req, res) => {
     let values = [publication.userID, publication.title, publication.article, publication.publicationPicture];
     connectDb.query(sql, [values], function(err, data) {
         if(err){
-            return res.status(400).json({err});
+            return res.status(400).json(console.log(err));
         };
         res.status(201).json(console.log("publication reussie"));
     });
@@ -56,7 +56,6 @@ exports.getAllPublication = (req, res) => {
             return res.status(400).json(err);
         }
         res.json(data)
-        console.log(data)
     });
 };
 

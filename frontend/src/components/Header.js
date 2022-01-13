@@ -9,13 +9,10 @@ function Header() {
         setAnim(!anim)
         setChangeBack(!changeBack)
     };
-    let params = (new URL(document.location)).searchParams;
-    let myName = params.get('name');
     return (
         <div className="header">
             <img src="./img/logo.png" alt="logo_image" className="logoHeader"></img>
             <h1 className="titleHeader">Groupomania</h1> 
-            <p className="myName">bonjour ${myName}</p>
             <button onClick={btnHeader} className={`btnHeader ${changeBack ? "btnMenuChange" : ""}`}></button>
             <div className="createPublication">
                 <div className="publicationGroupe">

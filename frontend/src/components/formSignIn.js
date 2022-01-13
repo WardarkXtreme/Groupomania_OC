@@ -17,7 +17,7 @@ function FormSignIn() {
         })
         .then(res => {
             // console.log(res)
-            window.location = "/GeneralHome"+"?id="+res.data.userID+"?name="+res.data.lastName;
+            window.location = "/GeneralHome"+"?id="+res.data.userID;
             window.confirm("connecté");
         })
         .catch(error => {

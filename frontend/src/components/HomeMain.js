@@ -2,7 +2,7 @@ import axios from "axios";
 import Header from "./Header";
 
 function getAllPublication() {
-    let url ="http://localhost:3000/api/allPublication";
+    let url ="http://localhost:3000/api/auth/allPublication";
     axios.get(url)
     .then((dataPublication) => {
         console.log(dataPublication)
