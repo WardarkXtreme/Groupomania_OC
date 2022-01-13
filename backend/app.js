@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user.route');
 const publicationRoutes = require('./routes/publication.route');
 const commentRoutes = require("./routes/comment.route");
+const { urlencoded } = require('body-parser');
 
 const app = express();
 
@@ -15,9 +16,10 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+app.use(urlencoded({ extended: true}));
 
 app.use("/api/auth", userRoutes);
-app.use("/api/auth", publicationRoutes);
+app.use("/api/", publicationRoutes);
 app.use("/api/auth", commentRoutes)
 
 

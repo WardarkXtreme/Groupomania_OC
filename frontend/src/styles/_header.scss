@@ -9,12 +9,13 @@
         width: 100%;
         background: black;
         .header{
-            z-index: 2;
             display: flex;
             width: 100%;
-            height: 140px;
+            height: auto;
+            min-height: 150px;
             border-bottom: $color-1 solid 1.5px;
             box-shadow:lightblue 0 2px 3px 0;
+            flex-wrap: wrap;
             .logoHeader{
                 display: flex;
                 object-fit: contain;
@@ -22,6 +23,7 @@
                 height: 90px;
                 position: absolute;
                 justify-content: center;
+                padding:  30px 0 30px 0;
             }
             .btnHeader {
                 display: flex;
@@ -38,13 +40,12 @@
                 cursor: pointer;
             }
             .titleHeader {
-                margin: 0 0 20px 0;
-                padding: 0;
                 display: flex;
                 width: 100%;
                 justify-content: center;
-                align-items: end;
-                color: $color-1;
+                align-items: start;
+                color: #6ABDFA;
+                margin: 0;
             }
         }
         #container{
@@ -61,7 +62,7 @@
     position: absolute;
     height: 100px;
     width: 220px;
-    top: 141px;
+    top: 151px;
     left: 0px;
     border-right: solid lightblue 1px;
     border-bottom: solid lightblue 1px;

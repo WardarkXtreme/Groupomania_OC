@@ -15,13 +15,14 @@ function FormSignIn() {
             email: data.email,
             password: data.password,
         })
-            .then(res => {
-                window.location = "/GeneralHome";
-                window.confirm("connecté");
-            })
-            .catch(error => {
-                window.alert(error);
-            })
+        .then(res => {
+            // console.log(res)
+            window.location = "/GeneralHome"+"?id="+res.data.userID+"?name="+res.data.lastName;
+            window.confirm("connecté");
+        })
+        .catch(error => {
+            window.alert(error);
+        })
     }
     function handle(e) {
         const newdata = { ...data }

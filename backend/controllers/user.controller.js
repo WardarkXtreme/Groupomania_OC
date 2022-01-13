@@ -53,11 +53,15 @@ exports.login = (req, res, next) => {
                     return res.status(401).json({error: "Mot de passe incorrect !"});
                 }
                 res.status(200).json({
-                    userID: User.userID,
-                    token: jwt.sign({ userID: User.userID }, 'RANDOM_TOKEN_SECRECT', {
-                        expiresIn: "24h",
-                    }),
-                });
+                    userID: data[0].userID,
+                    lastName: data[0].lastName,
+                    token: jwt.sign(
+                        {userID : data[0].userID, lastName: data[0].lastName},
+                        'RANDOM_TOKEN_SECRET',
+                        {expiresIn: "24h"}
+                    )}
+                )
+                
             })
             .catch(error => res.status(500).json({error}));  
     });
@@ -73,12 +77,12 @@ exports.deleteAccount = (req, res) => {
     });
 };
 
-exports.getOneUser = (req, res, next) => {
-    let sql = `SELECT * FROM Users WHERE userID = ?`;
+exports.getOneUser = (req, res) => {
+    let sql = `SELECT * FROM User WHERE userID = ?`;
     db.query(sql, [req.params.userID], function(err, data) {
     if (err) {
         return res.status(404).json({err});
     }
-    res.json({status: 200, data, message: "User affiché avec succès !"})
+    res.status(200).json(data);
   });
 };

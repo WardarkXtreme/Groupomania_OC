@@ -2,7 +2,7 @@ import axios from "axios";
 import Header from "./Header";
 
 function getAllPublication() {
-    const url ="http://localhost:3000/api/auth/allPublication";
+    let url ="http://localhost:3000/api/allPublication";
     axios.get(url)
     .then((dataPublication) => {
         console.log(dataPublication)
@@ -49,6 +49,7 @@ function displayPublication(container, publication) {
     article.innerHTML = publication.article
     article.setAttribute("class", "publicationArticle")
 };
+
 
 function displayAllPublication(){
     getAllPublication();
