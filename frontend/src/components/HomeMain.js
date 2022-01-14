@@ -18,17 +18,15 @@ function displayPublication(container, publication) {
     //------création des contenant html-------//
     const groupe = document.createElement('div')
     const title = document.createElement('p')
-    const firstName = document.createElement('p')
-    const lastName = document.createElement('p')
+    const name = document.createElement('p')
     const pseudo = document.createElement('p')
     const publicationPicture = document.createElement('img')
     const article = document.createElement('p')
 
     //------indication des contenus aux contenants-------//
-    groupe.appendChild(title)
-    groupe.appendChild(firstName)
-    groupe.appendChild(lastName)
+    groupe.appendChild(name)
     groupe.appendChild(pseudo)
+    groupe.appendChild(title)
     groupe.appendChild(publicationPicture)
     groupe.appendChild(article)
     container.appendChild(groupe)
@@ -38,10 +36,8 @@ function displayPublication(container, publication) {
     
     title.innerHTML = publication.title
     title.setAttribute("class", "publicationTitle")
-    firstName.innerHTML = publication.firstName
-    firstName.setAttribute("class", "publicationFirstName")
-    lastName.innerHTML = publication.lastName
-    lastName.setAttribute("class", "publicationLastName")
+    name.innerHTML = publication.firstName + " " + publication.lastName
+    name.setAttribute("class", "publicationName")
     pseudo.innerHTML = publication.pseudo
     pseudo.setAttribute("class", "publicationPseudo")
     publicationPicture.src = publication.publicationPicture

@@ -3,7 +3,7 @@
 
 #container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     margin-top: 90px;
     .publicationGroupe {
@@ -17,9 +17,44 @@
             width: 100%;
             filter: drop-shadow(0 0 1vh $color-1);
         }
-        p{
+        .publicationArticle{
+            resize: none;
+
+        }
+        .publicationTitle{
             color: white;
-            padding-left: 10%;
+            font-family: $font-1;
+            font-size: 25px;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .publicationName{
+            color: $color-1;
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            padding-left: 20px;
+            font-size: 18px;
+        }
+        .publicationPseudo{
+            color: #6ABDFA;
+            display: flex;
+            position: relative;
+            top: -40px;
+            width: 96%;
+            justify-content: flex-end;
+            font-size: 18px;
+        }
+        .publicationArticle{
+            color: white;
+            display: flex;
+            font-family: $font-1;
+            font-size: 18px;
+            height: auto;
+            width: 50%;
+            padding: 20px;
+            
         }
 
     }   
@@ -63,7 +98,6 @@
                 display: flex;
                 height: 152px;
                 align-items: start;
-                
             }
             #previewPic{
                 display: flex;
