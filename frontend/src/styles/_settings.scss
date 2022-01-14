@@ -42,11 +42,11 @@ body{
 @keyframes anim {
     from{
         visibility: hidden;
-        left: -300px;
+        transform:translate3d(-200px, 0px, 0px);
     }
     to{
         visibility: visible;
-        left: 0;
+        transform:translate3d(0px, 0px, 0px);
     }
 }
 @keyframes changeBack {
@@ -57,5 +57,15 @@ body{
     to {
         transform: rotate(360deg);
         background-image: url(./img/close.png);
+    }
+}
+@keyframes slideDown {
+    from{
+        display: none;
+        transform:translate3d(0px, -700px, 0px);
+    }
+    to{
+        display: flex;
+        transform:translate3d(0px, 0px, 0px);
     }
 }

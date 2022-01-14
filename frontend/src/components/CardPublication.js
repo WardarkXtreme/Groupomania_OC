@@ -13,9 +13,9 @@ function CreateCard(){
         article: ""
     });
     function empty(){
-        document.getElementsByClassName('title').value = '';
-        document.getElementsByClassName('publicationPicture').value = '';
-        document.getElementsByClassName('article').value = '';
+        document.getElementsById('title').value = '';
+        document.getElementsById('publicationPicture').value = '';
+        document.getElementsById('article').value = '';
     }
     function submit(e) {
         e.preventDefault();
@@ -48,7 +48,7 @@ function CreateCard(){
                 <input onChange={(e)=>handle(e)} value={data.publicationPicture} required={true} type="URL" id="publicationPicture" name="publicationPicture" placeholder="Votre https://gif.exemple"/>
                 <img id="previewPic" onChange={(e)=>handle(e)} src={data.publicationPicture}></img>
                 <input onChange={(e)=>handle(e)} value={data.pdublicationArticle} required={true} type="textarea" id="article" name="article" placeholder="Votre article"/>
-                <button className="btnSendCard">envoyer</button>
+                <button className="btnSendCard">Publier !</button>
             </form>
         </div>
     )
