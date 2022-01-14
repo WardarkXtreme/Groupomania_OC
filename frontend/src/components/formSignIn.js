@@ -16,8 +16,8 @@ function FormSignIn() {
             password: data.password,
         })
         .then(res => {
-            // console.log(res)
-            window.location = "/GeneralHome"+"?id="+res.data.userID;
+            sessionStorage.setItem("token", res.data.token)
+            window.location = "/GeneralHome"+"?id="+res.data.userID
             window.confirm("connecté");
         })
         .catch(error => {

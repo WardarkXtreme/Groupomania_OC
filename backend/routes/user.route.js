@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const userCtrl = require("../controllers/user.controller");
-const auth = require('../middleware/auth');
 
 //Requête POST pour inscription d'un nouveau user
 router.post("/signup", userCtrl.signup); 
