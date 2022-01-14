@@ -1,13 +1,10 @@
-import axios from "axios";
+import Axios from "axios";
 import Header from "./Header";
 
 function getAllPublication() {
-    let url ="http://localhost:3000/api/auth/allPublication/";
-    axios.get(url, {
-        headers: {
-            Authorization: "Bearer " + sessionStorage.token,
-          },
-        })
+    let url ="http://localhost:3000/api/auth/all";
+        Axios.get(url, {headers: {Authorization: "Bearer " + sessionStorage.token,},
+    })
     .then((dataPublication) => {
         console.log(dataPublication)
         dataPublication.data.forEach(publication => {

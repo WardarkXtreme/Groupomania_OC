@@ -5,7 +5,7 @@ function CreateCard(){
     let params = (new URL(document.location)).searchParams;
     let myID = params.get('id');
 
-    const url ="http://localhost:3000/api/auth/createPublication"
+    const url ="http://localhost:3000/api/auth/add/"
     const [data, setData] = useState({
         userID: "",
         title: "",
@@ -14,12 +14,13 @@ function CreateCard(){
     });
     function submit(e) {
         e.preventDefault();
-        Axios.post(url,{
+        Axios.post(url,{ headers: { Authorization: "Bearer " + sessionStorage.token},
+              
             userID: myID,
             title: data.title,
             publicationPicture: data.publicationPicture,
-            article: data.article           
-        })
+            article: data.article },              
+        )
         .then(res=>{
             window.alert("publication effectué avec succée")
             window.location.reload();

@@ -20,7 +20,7 @@ app.use(urlencoded({ extended: true}));
 
 app.use("/api/auth", userRoutes);
 app.use("/api/auth", publicationRoutes);
-app.use("/api/auth", commentRoutes)
+app.use("/api/auth", commentRoutes);
 
 
 module.exports = app;
