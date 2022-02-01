@@ -61,7 +61,7 @@ exports.getAllPublication = (req, res) => {
         if (err) {
             return res.status(400).json(err);
         }
-        res.json(data)
+        res.status(200).json(data)
     });
 };
 
@@ -75,3 +75,35 @@ exports.getOnePublication = (req, res) => {
         res.status(200).json(result);
     })
 };
+
+exports.managementLike = (req, res) => {
+    let sql = `UPDATE FROM publication WHERE publicationID = ?`;
+    connectDb.query(sql, [req.params.publicationID], function(err, result) {
+        if (err) {
+            return res.status(400).json({ err })
+        }
+        const userId = req.body.userID;
+        const like = req.body.like;
+        const updateLike = {
+            usersLiked: result.usersLiked,
+            usersDisliked: result.usersDisliked,
+            like: 0,
+            dislike: 0
+        }
+        if(like == 1) {
+            updateLike.usersLiked.push(userId);  
+        };
+        if(like == -1) {
+            updateLike.usersDisliked.push(userId);
+        };
+        if(like == 0) {
+            updateLike.usersLiked.splice(userId);
+            updateLike.usersDisliked.splice(userId);
+        };
+        updateLike.like = updateLike.usersLiked.length;
+        updateLike.dislike = updateLike.usersDisliked.length;
+
+        res.status(201).json({message: "réaction publiée"})
+
+    })
+}

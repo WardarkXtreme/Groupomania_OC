@@ -6,9 +6,9 @@ const userCtrl = require("../controllers/user.controller");
 router.post("/signup", userCtrl.signup); 
 //Requête POST pour vérifier un user
 router.post("/login", userCtrl.login); 
-//requête POST pour suppression du compte
-router.post("/deleteAccount", userCtrl.deleteAccount);
-
+//requête DELETE pour suppression du compte
+router.delete("/del/:id", userCtrl.deleteAccount);
+//requête GET pour info d'un utilisateur
 router.get("/user/:id", userCtrl.getOneUser);
 
 module.exports = router;

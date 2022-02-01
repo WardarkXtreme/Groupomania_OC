@@ -7,8 +7,8 @@ const Comment = function (comment) {
     this.userID = comment.userID;
     this.publicationID = comment.publicationID;
     this.commentText = comment.commentText;
-    this.createdOn = new Date();
-    this.updateOn = new Date();
+    this.createdOn = comment.createdOn;
+    this.updateOn = comment.updateOn;
 };
 
 module.exports = Comment;

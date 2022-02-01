@@ -23,10 +23,11 @@ exports.signup = (req, res) => {
             lastName: req.body.lastName,
             password: hash,
             pseudo: req.body.pseudo,
-            createdOn: date
+            createdOn: date,
+            userAdmin: false
         });
-        let sql = `INSERT INTO User (email, firstName, lastName, password, pseudo, createdOn) VALUES (?)`;
-        let values = [user.email, user.firstName, user.lastName, user.password, user.pseudo, user.createdOn];
+        let sql = `INSERT INTO User (email, firstName, lastName, password, pseudo, createdOn, userAdmin) VALUES (?)`;
+        let values = [user.email, user.firstName, user.lastName, user.password, user.pseudo, user.createdOn, user.userAdmin];
         connectDb.query(sql, [values], function(err, data) {
             if(err) {
                 return res.status(400).json({err});
@@ -39,7 +40,7 @@ exports.signup = (req, res) => {
 
 // controlleur de connexion
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
     //Recherche de l'utilisateur dans la DB via son email 
     let sql = `SELECT * FROM User WHERE email = ?`;
     connectDb.query(sql, [req.body.email], function(err, data) {
