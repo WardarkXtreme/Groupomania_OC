@@ -11,8 +11,8 @@ date = (jma + " " + "à" + " " + hms);
 //___________fonction de création de commentaire_______//
 exports.createComment = (req, res) => {
     const comment = new Comment ({        
-        userID : req.params.userID,
-        publicationID : req.params.publicationID,
+        userID : req.params.id,
+        publicationID : req.body.publicationID,
         commentText : req.body.commentText,
         createdOn : date       
     });
@@ -27,8 +27,8 @@ exports.createComment = (req, res) => {
 }
 //_______________fonction pour modification d'un commentaire________//
 exports.modifyComment = (req, res) => {
-    let sql = `UPDATE comment SET commentText = ? WHERE publicationID = ?`;
-    let values = [req.body.commentText, req.body.publicationID];
+    let sql = `UPDATE comment SET commentText = ? WHERE userID = ?`;
+    let values = [req.body.commentText, req.params.id];
     connectDb.query(sql, values, function (err, data) {
         if(err){
             res.status(400).json({err})
@@ -41,8 +41,8 @@ exports.modifyComment = (req, res) => {
 //______________________fonction pour supprimer un commentaire ___________//
 
 exports.deleteComment = (req, res) => {
-    let sql = `DELETE comment WHERE commentID = ?`
-    let values = [req.params.CommentID]
+    let sql = `DELETE FROM comment WHERE commentID = ?`
+    let values = [req.params.id]
     connectDb.query(sql, [values], function (err, data) {
         if (err) {
             res.status(400).json({err})
@@ -51,23 +51,11 @@ exports.deleteComment = (req, res) => {
     })
 }
 
-//________________fonction d'affichage de tous les commentaires____________//
+//_________________fonction d'affichage des commentaires d'une publication____________//
 
-exports.getAllComment = (req, res) => {
-    let sql = `SELECT * FROM comment INNER JOIN user ON comment.userID`
-    connectDb.query(sql, function (err,data) {
-        if (err) {
-            res.status(400).json({err})
-        }
-        res.status(200).json(data)
-    })
-}
-
-//_________________fonction d'affichage d'un seul commentaire____________//
-
-exports.getOneComment = (req, res) => {
-    let sql = `SELECT * FROM comment INNER JOIN user ON comment.userID WHERE commentID = ?`;
-    connectDb.query(sql, [req.params.commentID], function(err, result) {
+exports.getCommentForOnePublication = (req, res) => {
+    let sql = `SELECT * FROM comment INNER JOIN user ON comment.userID WHERE publicationID=?`;
+    connectDb.query(sql, [req.params.id], function(err, result) {
         if (err) {
             return res.status(400).json(err);
         }

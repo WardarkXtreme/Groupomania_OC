@@ -13,7 +13,7 @@ const Publication = function (publication) {
     this.updateOn = publication.updateOn;
     this.like = publication.like;
     this.dislike = publication.dislike;
-    this.usersLiked = publication.usersLiked;
+    this.usersLiked = publication.usersLiked
     this.usersDisliked = publication.usersDisliked;
 };
 

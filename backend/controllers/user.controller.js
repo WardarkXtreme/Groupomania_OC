@@ -23,16 +23,15 @@ exports.signup = (req, res) => {
             lastName: req.body.lastName,
             password: hash,
             pseudo: req.body.pseudo,
-            createdOn: date,
-            userAdmin: false
+            createdOn: date
         });
-        let sql = `INSERT INTO User (email, firstName, lastName, password, pseudo, createdOn, userAdmin) VALUES (?)`;
-        let values = [user.email, user.firstName, user.lastName, user.password, user.pseudo, user.createdOn, user.userAdmin];
+        let sql = `INSERT INTO User (email, firstName, lastName, password, pseudo, createdOn) VALUES (?)`;
+        let values = [user.email, user.firstName, user.lastName, user.password, user.pseudo, user.createdOn];
         connectDb.query(sql, [values], function(err, data) {
             if(err) {
                 return res.status(400).json({err});
             }
-            res.status(200).json(console.log("inscription réalisée avec succés !"));
+            res.status(200).json({message: "inscription réalisée avec succés !"});
         });
     })
     .catch(error=> res.status(500).json({error}));
@@ -68,18 +67,20 @@ exports.login = (req, res) => {
 };
 
 exports.deleteAccount = (req, res) => {
+
     let sql = `DELETE FROM User WHERE userID = ?`;
-    connectDb.query(sql, [req.params.userID], function(err, data) {
+    connectDb.query(sql, [req.params.id], function(err) {
         if(err){
             res.status(400).json({err});
         }
-        res.status(201).json(console.log("compte supprimé avec succés"));
-    });
+        res.status(201).json({message: "votre compte a bien été supprimé, à bientôt."});
+    })
 };
 
 exports.getOneUser = (req, res) => {
+
     let sql = `SELECT * FROM User WHERE userID = ?`;
-    db.query(sql, [req.params.userID], function(err, data) {
+    connectDb.query(sql, [req.params.id], function(err, data) {
     if (err) {
         return res.status(404).json({err});
     }
