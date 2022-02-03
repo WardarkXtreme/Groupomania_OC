@@ -2,6 +2,7 @@ const connectDb = require('../db-Connect/dbConnect.js');
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 
 //___________Appel du temps sur la variable date__________//
@@ -57,7 +58,7 @@ exports.login = (req, res) => {
                     lastName: data[0].lastName,
                     token: jwt.sign(
                         {userID : data[0].userID, lastName: data[0].lastName},
-                        'RANDOM_TOKEN_SECRET',
+                        process.env.SECRET_T,
                         {expiresIn: "24h"}
                     )}
                 )

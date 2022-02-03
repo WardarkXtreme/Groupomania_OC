@@ -5,7 +5,7 @@ function CreateCard(){
     let params = (new URL(document.location)).searchParams;
     let myID = params.get('id');
 
-    const url ="http://localhost:3000/api/auth/add/"
+    const url ="http://localhost:3000/api/pub"
     const [data, setData] = useState({
         userID: "",
         title: "",
@@ -39,7 +39,7 @@ function CreateCard(){
         <div className="post">
             <form onSubmit={(e)=>submit(e)} className="publicationForm">
                 <input onChange={(e)=>handle(e)} value={data.title} required={true} type="text" id="title" name="title" placeholder="Votre titre"/>
-                <input onChange={(e)=>handle(e)} value={data.publicationPicture} required={true} type="URL" id="publicationPicture" name="publicationPicture" placeholder="Votre https://gif.exemple"/>
+                <input type="file" id="file" name="file" value={data.publicationPicture}/>
                 <img id="previewPic" onChange={(e)=>handle(e)} src={data.publicationPicture}></img>
                 <input onChange={(e)=>handle(e)} value={data.pdublicationArticle} required={true} type="text" id="article" name="article" placeholder="Votre article"/>
                 <button className="btnSendCard">Publier !</button>

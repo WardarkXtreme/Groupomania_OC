@@ -3,11 +3,12 @@ import FormSignUp from "../components/FormSignUp";
 const HomeSignIn = () => {
     return (
         <div className="home">
-            <div className="vectorOne"></div>
-            <div className="logo"><img src="./img/logo.png" alt="logo-Groupomania"/></div>
-            <h1 className="titleForm">Groupomania</h1>
-            <div className="centerForm">
-                <div className="vectorTwo">
+            <div className="HEADER">
+                <img className="logo" src="./img/logo.png" alt="logo-Groupomania"/>
+                <h1 className="titleForm">Groupomania</h1>
+            </div>
+            <div className="center__form">
+                <div className="card__form">
                     <FormSignUp />
                 </div>
             </div> 

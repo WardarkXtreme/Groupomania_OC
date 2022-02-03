@@ -32,12 +32,12 @@ function FormSignIn() {
     };
 
     return (
-        <div className="login">
+        <div className="Form">
             <Navigation />
             <form onSubmit={(e) => submit(e)} className="connectionForm">
                 <input onChange={(e) => handle(e)} value={data.email} required={true} type="mail" id="email" name="email" placeholder="Votre email" />
                 <input onChange={(e) => handle(e)} value={data.password} required={true} type="password" id="password" name="password" placeholder="Votre mot de passe" />
-                <button className="btnInscription">Se Connecter</button>
+                <button className="btnForm">Se Connecter</button>
             </form>
         </div>
     )

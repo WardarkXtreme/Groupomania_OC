@@ -2,18 +2,16 @@ import Axios from "axios";
 import Header from "./Header";
 
 function getAllPublication() {
-    let url ="http://localhost:3000/api/auth/all";
-        Axios.get(url, {headers: {Authorization: "Bearer " + sessionStorage.token,},
-    })
+    fetch("http://localhost:3000/api/pub")   
+    .then((res) => res.json())
     .then((dataPublication) => {
         console.log(dataPublication)
-        dataPublication.data.forEach(publication => {
+        dataPublication.forEach(publication => {
             displayPublication(document.getElementById("container"), publication);
         })
-    })
-    .catch(err => {console.log(err)});
-    
+    });    
 };
+
 function displayPublication(container, publication) {
 
     //------création des contenant html-------//

@@ -1,6 +1,7 @@
 const connectDb = require("../db-Connect/dbConnect.js");
 const Publication = require("../models/publication.model");
 const Like = require("../models/like.model");
+const fs = require('fs');
 
 
 //___________Appel du temps sur la variable date__________//
@@ -19,7 +20,7 @@ exports.createPublication = (req, res) => {
         userID: req.body.userID,
         title: req.body.title,
         article: req.body.article,
-        publicationPicture: req.body.publicationPicture    
+        publicationPicture: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`    
     });
     let sql = `INSERT INTO Publication (userID, title, article, publicationPicture, createdOn) VALUES (?)`;
     let values = [publication.userID, publication.title, publication.article, publication.publicationPicture, date];
@@ -64,18 +65,18 @@ exports.getAllPublication = (req, res) => {
         if (err) {
             return res.status(400).json(err);
         }
-        res.status(200).json({data})
+        res.status(200).json(data)
     });
 };
 
 // fonction pour afficher une seule publication
 exports.getOnePublication = (req, res) => {
     let sql = `SELECT * FROM publication INNER JOIN user ON publication.userID WHERE publicationID = ?`;
-    connectDb.query(sql, [req.params.id], function(err, result) {
+    connectDb.query(sql, [req.params.id], function(err, data) {
         if (err) {
             return res.status(400).json(err);
         }
-        res.status(200).json(result);
+        res.status(200).json({data});
     })
 };
 

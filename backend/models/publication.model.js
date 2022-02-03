@@ -12,9 +12,6 @@ const Publication = function (publication) {
     this.createdOn =  publication.createdOn;
     this.updateOn = publication.updateOn;
     this.like = publication.like;
-    this.dislike = publication.dislike;
-    this.usersLiked = publication.usersLiked
-    this.usersDisliked = publication.usersDisliked;
 };
 
 module.exports = Publication;

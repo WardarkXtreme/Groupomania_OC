@@ -7,7 +7,7 @@ const Navigation = () => {
             <NavLink className="signin" exact="true" to="/">
                 Connexion
             </NavLink>
-            <NavLink className="/signup" exact="true" to="/Signup">
+            <NavLink className="signup" exact="true" to="/signup">
                 Inscription
             </NavLink>
         </div>
