@@ -100,16 +100,15 @@ exports.managementLike = (req, res) => {
             sql = `SELECT * FROM groupomania.like WHERE publicationID=?`
             connectDb.query(sql, [req.body.publicationID], function (err, data) {
                 if (err) {
-                    res.json({err});
+                    res.satatus(400).json({err});
                 };
-
-                const count = JSON.stringify([data].length); 
+                const count = JSON.stringify([...data].length); 
                 sql = `UPDATE groupomania.publication SET groupomania.publication.like=? WHERE publicationID=?`
                 connectDb.query(sql, [count, req.body.publicationID], function (err, data) {
                     if (err) {
-                        res.json({err});
+                        res.satatus(400).json({err});
                     };
-                    res.status(200).json(data)
+                    res.status(200).json({message: "votre avis a été pris en compte."})
                 });
             });      
         });
@@ -121,7 +120,22 @@ exports.managementLike = (req, res) => {
             if (err) {
                 res.status(400).json({err});
             };
-            res.status(200).json({data})
-        })
-    }
+
+            sql = `SELECT * FROM groupomania.like WHERE publicationID=?`
+            connectDb.query(sql, [req.body.publicationID], function (err, data) {
+                if (err) {
+                    res.satatus(400).json({err});
+                };
+                const count = JSON.stringify([...data].length);
+
+                sql = `UPDATE groupomania.publication SET groupomania.publication.like=? WHERE publicationID=?`
+                connectDb.query(sql, [count, req.body.publicationID], function (err, data) {
+                    if (err) {
+                        res.satatus(400).json({err});
+                    };
+                    res.status(200).json({message: "votre avis a été pris en compte."})
+                });
+            }); 
+        });
+    };
 };
