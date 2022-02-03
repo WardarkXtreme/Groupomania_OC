@@ -1,29 +1,28 @@
 const connectDb = require("../db-Connect/dbConnect.js");
 const Publication = require("../models/publication.model");
+const Like = require("../models/like.model");
 
 
 //___________Appel du temps sur la variable date__________//
 let date;
 date = new Date();
 let jma = date.toLocaleDateString().replace(/[/]/g, "-");
-let hms = date.toLocaleTimeString()
+let hms = date.toLocaleTimeString();
 date = (jma + " " + "à" + " " + hms);
-;
+
 
 
 //Fonction pour nouvelle publication
 exports.createPublication = (req, res) => {
-    const tableau = [];
+
     const publication = new Publication ({        
         userID: req.body.userID,
         title: req.body.title,
         article: req.body.article,
-        publicationPicture: req.body.publicationPicture,
-        usersLiked: JSON.stringify(tableau),
-        usersDisliked: JSON.stringify(tableau)    
+        publicationPicture: req.body.publicationPicture    
     });
-    let sql = `INSERT INTO Publication (userID, title, article, publicationPicture, usersLiked, usersDisliked, createdOn) VALUES (?)`;
-    let values = [publication.userID, publication.title, publication.article, publication.publicationPicture, publication.usersLiked, publication.usersDisliked, date];
+    let sql = `INSERT INTO Publication (userID, title, article, publicationPicture, createdOn) VALUES (?)`;
+    let values = [publication.userID, publication.title, publication.article, publication.publicationPicture, date];
     connectDb.query(sql, [values], function(err, data) {
         if(err){
             return res.status(400).json(console.log(err));
@@ -60,12 +59,12 @@ exports.deletePublication = (req, res) => {
 
 //fonction pour afficher toutes les publications
 exports.getAllPublication = (req, res) => {
-    let sql = `SELECT * FROM publication INNER JOIN user ON publication.userID = user.userID`;
+    let sql = `SELECT * FROM groupomania.publication INNER JOIN groupomania.user ON publication.userID = user.userID`;
     connectDb.query(sql, function(err, data) {
         if (err) {
             return res.status(400).json(err);
         }
-        res.status(200).json(data)
+        res.status(200).json({data})
     });
 };
 
@@ -80,79 +79,49 @@ exports.getOnePublication = (req, res) => {
     })
 };
 
+
 exports.managementLike = (req, res) => {
-    let sql = `SELECT * FROM publication WHERE publicationID=?`
-    connectDb.query(sql, [req.params.id], function (err, data) {
+    const like = req.body.like;
+
+    if (like == 1) {
+
+        const LIKE = new Like ({
+            userID: req.params.id,
+            publicationID: req.body.publicationID
+        });
+
+        let sql = `INSERT INTO groupomania.like (userID, publicationID) VALUES (?)`;
+        let values = [LIKE.userID, LIKE.publicationID];
+        connectDb.query(sql, [values], function (err) {
+            if (err) {
+                res.status(400).json({err});
+            };
+
+            sql = `SELECT * FROM groupomania.like WHERE publicationID=?`
+            connectDb.query(sql, [req.body.publicationID], function (err, data) {
+                if (err) {
+                    res.json({err});
+                };
+
+                const count = JSON.stringify([data].length); 
+                sql = `UPDATE groupomania.publication SET groupomania.publication.like=? WHERE publicationID=?`
+                connectDb.query(sql, [count, req.body.publicationID], function (err, data) {
+                    if (err) {
+                        res.json({err});
+                    };
+                    res.status(200).json(data)
+                });
+            });      
+        });
+    };
+    if (like == 0) {
         
-        console.log(data)
-
-        // if (err) {
-        //     return res.status(200).json({err});
-        // };
-        // const ul = JSON.parse([data.usersLiked]);
-        // const ud = JSON.parse([data.usersLiked]);
-        // const userId = req.body.userID;
-        // const like = req.body.like;
-        // const updateLike = {
-        //     usersLiked: ul,
-        //     usersDisliked: ud,
-        //     like: 0,
-        //     dislike: 0
-        // }
-        // if(like == 1) {
-        //     updateLike.usersLiked.push(userId);  
-        // };
-        // if(like == -1) {
-        //     updateLike.usersDisliked.push(userId);
-        // };
-        // if(like == 0) {
-        //     updateLike.usersLiked.splice(userId);
-        //     updateLike.usersDisliked.splice(userId);
-        // };
-                
-        // updateLike.like = updateLike.usersLiked.length;
-        // updateLike.dislike = updateLike.usersDisliked.length;
-            
-        // let sql = `UPDATE publication SET like=?, dislike=?, usersLiked=?, usersDisliked=? WHERE publicationID=?`;
-        // connectDb.query(sql, [updateLike.like, updateLike.dislike, updateLike.usersLiked, updateLike.usersDisliked, req.params.id], function(err) {
-        // if (err) {
-        //     console.log(err)
-        //     return res.status(400).json({ err })
-        // }
-        // res.status(201).json({message: "avis publiés"})
-        // })
-    })
-}
-
-// exports.managementLike = (req, res) => {
-
-//     const userId = req.body.userID;
-//     const like = req.body.like;
-//     const updateLike = {
-//         usersLiked: [],
-//         usersDisliked: [],
-//         like: 0,
-//         dislike: 0
-//     }
-//     if(like == 1) {
-//         updateLike.usersLiked.push(userId);  
-//     };
-//     if(like == -1) {
-//         updateLike.usersDisliked.push(userId);
-//     };
-//     if(like == 0) {
-//         updateLike.usersLiked.splice(userId);
-//         updateLike.usersDisliked.splice(userId);
-//     };
-//     updateLike.like = updateLike.usersLiked.length;
-//     updateLike.dislike = updateLike.usersDisliked.length;
-
-//     let sql = `UPDATE publication SET like=?, dislike=?, usersLiked=?, usersDisliked=? WHERE publicationID=?`;
-//     connectDb.query(sql, [updateLike.like, updateLike.dislike, updateLike.usersLiked, updateLike.usersDisliked, req.params.id], function(err) {
-//         if (err) {
-//             console.log(err)
-//             return res.status(400).json({ err })
-//         }
-//         res.status(201).json({message: "avis publiés"})
-//     });
-// };
+        let sql = `DELETE FROM groupomania.like WHERE likeID = ?`;
+        connectDb.query(sql, [req.body.likeID], function (err, data) {
+            if (err) {
+                res.status(400).json({err});
+            };
+            res.status(200).json({data})
+        })
+    }
+};
