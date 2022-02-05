@@ -1,18 +1,35 @@
 @import './setting';
+@import './animation';
 
 /*-----logo----*/
 .HEADER {
     display: flex;
     width: 100%;
     height: 100px;
-    .logo {
-        height: 150px;
+    .content {
+        animation: containerBall 1s infinite ease-out;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        width: 200px;
+        height: 130px;
+        .logo {
+            animation: Ball 1s infinite ease-out;
+            display: flex;
+            height: 100px;
+            width: 100px;
+            background: url(img/logo.png) no-repeat center;
+            background-size: contain;
+        }
     }
     .titleForm {
-        color: darkslateblue;
-        font-size: 5vw;
+        color: aqua;
+        font-size: calc(24px + 2vw);
         font-weight: 600;
         font-family: cursive;
+        display: flex;
+        height: 100%;
+        align-items: flex-end;
     }
 }
 /*-----Formulaire----*/
@@ -29,7 +46,7 @@
             width: 100%;
             flex-direction: column;
             align-items: center;
-            background-color: rgb(136, 136, 136);
+            background-color: rgb(174, 182, 191);
             border-radius: 2em;
             filter: drop-shadow(2px 4px 8px white);
             .navigation {
@@ -51,6 +68,14 @@
                     font-weight: 600;
                     font-family: cursive;
                     padding-left: 5px;
+                    animation: appearForm 1s ease-out;
+                    animation-fill-mode: forwards;
+                    &:focus{
+                        outline: 1px solid aqua;
+                    }
+                    &:hover{
+                        outline: 1px solid aqua;
+                    }
                 }
                 .btnForm {
                     display: flex;
@@ -61,7 +86,7 @@
                     font-size: 1.5em;
                     font-weight: 600;
                     font-family: cursive;
-                    background-color: darkslateblue;
+                    background-color: aqua;
                     border-radius: 2em;
                     border: none;
                     box-shadow: black 3px 3px 8px;
@@ -80,4 +105,44 @@
         }
     }
 }
+#messageMail, #messagePass, #messageLastName, #messageFirstName, #messagePseudo {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    transform: translateY(13px);
+}
+#email {
+    animation: none;
+}
+#password {
+    animation: none;
+}
 /*-----Footer----*/
+.reseauLink {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    p{
+        padding-left: 5px;
+        font-size: 1.5em;
+        font-weight: 600;
+        font-family: cursive;
+    }
+    .properties__reseauLink{
+        display: flex;
+        width: 300px;
+        justify-content: space-around;
+        height: auto;
+        .link_ico, .ico {
+            font-size: 45px;
+            color: black;
+            &:hover {
+                transform: scale(1);
+            }
+        }
+        .ico:hover:nth-child(1) {
+            color: aqua;
+        }
+    }
+}

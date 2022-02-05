@@ -23,13 +23,13 @@ a {
     text-decoration: none;
     font-weight: 600;
     font-family: cursive;
-    color: darkslateblue;
+    color: aqua;
     cursor: pointer;
     &:hover {
         transform: scale(1.1);
     }
     &:visited{
-        color: darkslateblue;
+        color: none;
         text-decoration: line-through;
     }
 }
