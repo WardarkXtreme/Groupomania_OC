@@ -1,4 +1,4 @@
-import FormSignUp from "../components/FormSignUp";
+import FormSignUp from "../components/formulaire/FormSignUp";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 

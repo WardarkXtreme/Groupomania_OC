@@ -16,8 +16,13 @@ function FormSignUp(){
     const [messageFirstName, setMessageFirstName] = useState("");
     const [messagePseudo, setMessagePseudo] = useState("");
 
+    const regExMail = /^(([a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}))$/;
+    const regExPassword = /^(([a-zA-Z0-9]{10,20}))$/;
+    const regExLastName = /^(([a-zA-Z-]{3,20}))$/;
+    const regExFirstName = /^(([a-zA-Z-]{3,20}))$/;
+    const regExPseudo = /^(([a-zA-Z0-9._-]{3,15}))$/;
+    
     const emailValidation = () => {
-        const regExMail = /^(([a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,4}))$/;
         if(regExMail.test(email)) {
             setMessageMail("email valide")
             document.getElementById('messageMail').style.color = 'rgb(32, 91, 42)'
@@ -29,7 +34,6 @@ function FormSignUp(){
         }
     }
     const passwordValidation = () => {
-        const regExPassword = /^(([a-zA-Z0-9]{10,20}))$/;
         if(regExPassword.test(password)) {
             setMessagePass("mot de passe valide")
             document.getElementById('messagePass').style.color = 'rgb(32, 91, 42)'
@@ -41,36 +45,33 @@ function FormSignUp(){
         }
     }
     const lastNameValidation = () => {
-        const regExLastName = /^(([a-zA-Z-]{3,20}))$/;
         if(regExLastName.test(lastName)) {
             setMessageLastName("valide")
             document.getElementById('messageLastName').style.color = 'rgb(32, 91, 42)'
         }else if (!regExLastName.test(lastName) && lastName !== "") {
-            setMessageLastName("non valide");
+            setMessageLastName("Prénom non valide");
             document.getElementById('messageLastName').style.color = 'rgb(151, 16, 16)'
         } else {
             setMessageLastName("");
         }
     }
     const firstNameValidation = () => {
-        const regExFirstName = /^(([a-zA-Z-]{3,20}))$/;
         if(regExFirstName.test(firstName)) {
             setMessageFirstName("valide")
             document.getElementById('messageFirstName').style.color = 'rgb(32, 91, 42)'
         }else if (!regExFirstName.test(firstName) && firstName !== "") {
-            setMessageFirstName("non valide");
+            setMessageFirstName("Nom non valide");
             document.getElementById('messageFirstName').style.color = 'rgb(151, 16, 16)'
         } else {
             setMessageFirstName("");
         }
     }
     const pseudoValidation = () => {
-        const regExPseudo = /^(([a-zA-Z0-9._-]{3,15}))$/;
         if(regExPseudo.test(pseudo)) {
             setMessagePseudo("valide")
             document.getElementById('messagePseudo').style.color = 'rgb(32, 91, 42)'
         }else if (!regExPseudo.test(pseudo) && pseudo !== "") {
-            setMessagePseudo("non valide");
+            setMessagePseudo("Pseudo non valide");
             document.getElementById('messagePseudo').style.color = 'rgb(151, 16, 16)'
         } else {
             setMessagePseudo("");
@@ -100,15 +101,22 @@ function FormSignUp(){
 
     function submit(e) {
         e.preventDefault();
-        // Axios.post(url,{ email: email, lastName: lastName, firstName: firstName, password: password, pseudo: pseudo })
-        // .then(res=>{
-        //     window.alert("Inscription réalisé avec succés, veuillez vous connecter")
-        //     window.location = "/";
-        // })
-        // .catch(error=>{
-        //     console.log(error)
-        //     empty();
-        // })
+        if (!regExMail.test(email) ||
+            !regExPassword.test(password) ||
+            !regExLastName.test(lastName) ||
+            !regExFirstName.test(firstName) ||
+            !regExPseudo.test(pseudo)) {
+            return console.log("error");
+        }
+        const url= "http://localhost:3000/api/auth/signup"
+        Axios.post(url,{ email: email, lastName: lastName, firstName: firstName, password: password, pseudo: pseudo })
+        .then(res=>{
+            window.alert("Inscription réalisé avec succés, veuillez vous connecter")
+            window.location = "/";
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
     return(
         <div className="Form">

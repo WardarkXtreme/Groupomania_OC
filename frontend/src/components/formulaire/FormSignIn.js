@@ -11,13 +11,11 @@ function FormSignIn() {
     });
     function submit(e) {
         e.preventDefault();
-        Axios.post(url, {
-            email: data.email,
-            password: data.password,
-        })
+        Axios.post(url, {email: data.email, password: data.password,})
         .then(res => {
-            sessionStorage.setItem("token", res.data.token)
-            window.location = "/GeneralHome"+"?id="+res.data.userID
+            window.location = "/home"
+            sessionStorage.setItem('user', res.data.userID)
+            sessionStorage.setItem('isConnected', 'true')
             window.confirm("connecté");
         })
         .catch(error => {
@@ -28,7 +26,6 @@ function FormSignIn() {
         const newdata = { ...data }
         newdata[e.target.id] = e.target.value
         setData(newdata)
-        console.log(newdata)
     };
 
     return (

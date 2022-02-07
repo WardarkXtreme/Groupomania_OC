@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const userRoutes = require('./routes/user.route');
 const publicationRoutes = require('./routes/publication.route');
 const commentRoutes = require("./routes/comment.route");
+const path = require('path');
 const { urlencoded } = require('body-parser');
 
 const app = express();
@@ -21,6 +22,7 @@ app.use(urlencoded({ extended: true}));
 app.use("/api/auth", userRoutes);
 app.use("/api/pub", publicationRoutes);
 app.use("/api/com", commentRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 
 module.exports = app;

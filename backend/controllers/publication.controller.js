@@ -15,7 +15,7 @@ date = (jma + " " + "à" + " " + hms);
 
 //Fonction pour nouvelle publication
 exports.createPublication = (req, res) => {
-
+    console.log (req.file)
     const publication = new Publication ({        
         userID: req.body.userID,
         title: req.body.title,

@@ -1,0 +1,77 @@
+@import './setting';
+
+.generalClass {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    .createCard{
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        justify-content: center;
+        .propForm{
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: 50px;
+            border-radius: 1em;
+            padding: 20px;
+            box-shadow: cyan 3px 3px 8px;
+            .agencement{
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+            }
+            .agencement label{
+                color: aqua;
+                font-size: 1.3em;
+            }
+            .agencement input{
+                border: none;
+                background: transparent;
+                border-bottom: 1px dashed aqua;
+                padding: 5px 0 5px 10px;
+                margin-bottom: 15px;
+                &:hover{
+                    outline: 1px solid aqua;
+                }
+                &:focus{
+                    outline: 1px solid aqua;
+                }
+            }
+            .agencement1{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                .btnCP{
+                    max-width: 150px;
+                    width: 100%;
+                }
+            }
+            
+            .entryFile{
+                display: flex;
+                width: 100%;
+                flex-wrap: wrap;
+                object-fit: contain;
+                .preview{
+                    display: flex;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+}
+.dislike{
+    color: black;
+    display: flex;
+    width: 23px;
+    cursor: pointer;
+}
+.like{
+    animation: like 0.3s linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+}
