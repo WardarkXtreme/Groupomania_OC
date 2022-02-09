@@ -48,15 +48,29 @@
             width: 100%;
             flex-direction: column;
             align-items: center;
-            background-color: rgb(174, 182, 191);
+            background-color: grey;
             border-radius: 2em;
-            filter: drop-shadow(2px 4px 8px white);
+            box-shadow: cyan 3px 3px 8px;
             .navigation {
                 display: flex;
                 width: 90%;
                 justify-content: space-between;
                 font-size: 1.5em;
                 padding: 30px 0;
+            }
+            .navigation a{
+                text-decoration: none;
+                font-weight: 600;
+                font-family: cursive;
+                color: aqua;
+                cursor: pointer;
+                &:hover {
+                    transform: scale(1.1);
+                }
+                &:visited{
+                    color: none;
+                    text-decoration: line-through;
+                }
             }
             .connectionForm {
                 display: flex;

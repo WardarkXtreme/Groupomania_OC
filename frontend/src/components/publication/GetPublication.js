@@ -1,6 +1,5 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import axios from "axios";
-import Like from "./Like";
 
 function DisplayAllPublication(){
 
@@ -20,23 +19,28 @@ function DisplayAllPublication(){
         fetchPublication();
     }, [])
 
+
+
     return (
         <Fragment>
             <div className='properties'>
                 {publication.map(item => (
-                    <div className='card' key={item.publicationID}>
-                        <h2 className='publicationTitle'>{item.title}</h2>
+                    <div className='card' key={item.publicationID} id={item.publicationID} onClick={ e => {
+                        e.preventDefault()
+                        let idPub = e.currentTarget.id 
+                        window.location = "/HomePub?"+idPub;    
+                    }}>
                         <div className='publicationName'>
-                            <p className='publicationFirstName'>{item.firstName}</p>
-                            <p className='publicationLastName'>{item.lastName}</p>
+                            <div className='propertiesName'>
+                                <p className='publicationFirstName'>{item.firstName}</p>
+                                <p className='publicationLastName'>{item.lastName}</p>
+                            </div>
+                            <div className='propertiesPseudo'>
+                                <p className='publicationPseudo'>{item.pseudo}</p>
+                            </div>
                         </div> 
-                        <p className='publicationPseudo'>{item.pseudo}</p>
                         <img className='publicationPicture' src={item.publicationPicture} alt={item.title}/>
-                        <p className='date'>{item.createdOn}</p>
-                        <div className='agenceLike'>  
-                            <Like />
-                            <p className='countLike'>{item.like}</p>
-                        </div>    
+                        <p className='date'>{item.createdOn}</p>    
                     </div>
                 ))}
             </div>

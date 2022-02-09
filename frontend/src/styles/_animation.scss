@@ -59,3 +59,66 @@
         transform: scale(1);
     }
 }
+@keyframes Appear {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes alim {
+    0%{
+        border-top: white solid 2px;
+        border-right: white solid 2px;
+        border-bottom: white solid 2px;
+    }
+    25%{
+        border-top: aqua solid 2px;
+        border-right: white solid 2px;
+        border-bottom: white solid 2px;
+    }
+    50%{
+        border-top: aqua solid 2px;
+        border-right: aqua solid 2px;
+        border-bottom: white solid 2px;
+    }
+    75%{
+        border-top: aqua solid 2px;
+        border-right: aqua solid 2px;
+        border-bottom: white solid 2px;
+    }
+    100%{
+        border-top: aqua solid 2px;
+        border-right: aqua solid 2px;
+        border-bottom: aqua solid 2px;
+    }
+}
+@keyframes cache {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes turn {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}
+@keyframes displayCreatePub {
+    from{
+        transform: translate(0, -200px);
+        opacity: 0;
+        z-index: -2;
+    }
+    to{
+        transform: translate(0, 0px);
+        opacity: 1;
+        z-index: none;
+    }
+}

@@ -15,6 +15,8 @@ router.get("/", publicationCtrl.getAllPublication);
 // Requête GET pour afficher une publication
 router.get("/:id", publicationCtrl.getOnePublication);
 //Requête POST pour nouvelle reaction sur publication
-router.post("/like/:id", publicationCtrl.managementLike); 
+router.post("/like/:id", publicationCtrl.managementLike);
+//Requête GET pour voir reaction sur publication
+router.get("/like/:id", publicationCtrl.getLike);
 
 module.exports = router;

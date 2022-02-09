@@ -1,0 +1,47 @@
+@import './setting';
+
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 50px;
+    border-radius: 1.2em;
+    padding: 5px 0;
+    box-shadow: cyan 3px 3px 8px;
+    background-color: grey;
+    text-decoration: none;
+    font-weight: 300;
+    font-family: cursive;
+    color: aqua;
+    cursor: pointer;
+    .publicationName{
+        display: flex;
+        width: 100%;
+        padding: 0 5px;
+        justify-content: space-between;
+        .propertiesName{
+            display: flex;
+            width: 135px;
+            justify-content: space-between;
+        }
+    }
+    .publicationPicture{
+        display: flex;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    .date{
+        padding-left: 5px;
+        width: 100%;
+    }
+    .article{
+        width: 100%;
+    }
+
+}
+.properties{
+    display: flex;
+    flex-direction: column-reverse;
+}

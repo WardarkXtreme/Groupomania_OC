@@ -25,7 +25,7 @@ function FormSignUp(){
     const emailValidation = () => {
         if(regExMail.test(email)) {
             setMessageMail("email valide")
-            document.getElementById('messageMail').style.color = 'rgb(32, 91, 42)'
+            document.getElementById('messageMail').style.color = 'rgb(0, 250, 72)'
         }else if (!regExMail.test(email) && email !== "") {
             setMessageMail("Email non valide");
             document.getElementById('messageMail').style.color = 'rgb(151, 16, 16)'
@@ -36,7 +36,7 @@ function FormSignUp(){
     const passwordValidation = () => {
         if(regExPassword.test(password)) {
             setMessagePass("mot de passe valide")
-            document.getElementById('messagePass').style.color = 'rgb(32, 91, 42)'
+            document.getElementById('messagePass').style.color = 'rgb(0, 250, 72)'
         }else if (!regExPassword.test(password) && password !== "") {
             setMessagePass("mot de passe non valide");
             document.getElementById('messagePass').style.color = 'rgb(151, 16, 16)'
@@ -47,7 +47,7 @@ function FormSignUp(){
     const lastNameValidation = () => {
         if(regExLastName.test(lastName)) {
             setMessageLastName("valide")
-            document.getElementById('messageLastName').style.color = 'rgb(32, 91, 42)'
+            document.getElementById('messageLastName').style.color = 'rgb(0, 250, 72)'
         }else if (!regExLastName.test(lastName) && lastName !== "") {
             setMessageLastName("Prénom non valide");
             document.getElementById('messageLastName').style.color = 'rgb(151, 16, 16)'
@@ -58,7 +58,7 @@ function FormSignUp(){
     const firstNameValidation = () => {
         if(regExFirstName.test(firstName)) {
             setMessageFirstName("valide")
-            document.getElementById('messageFirstName').style.color = 'rgb(32, 91, 42)'
+            document.getElementById('messageFirstName').style.color = 'rgb(0, 250, 72)'
         }else if (!regExFirstName.test(firstName) && firstName !== "") {
             setMessageFirstName("Nom non valide");
             document.getElementById('messageFirstName').style.color = 'rgb(151, 16, 16)'
@@ -69,7 +69,7 @@ function FormSignUp(){
     const pseudoValidation = () => {
         if(regExPseudo.test(pseudo)) {
             setMessagePseudo("valide")
-            document.getElementById('messagePseudo').style.color = 'rgb(32, 91, 42)'
+            document.getElementById('messagePseudo').style.color = 'rgb(0, 250, 72)'
         }else if (!regExPseudo.test(pseudo) && pseudo !== "") {
             setMessagePseudo("Pseudo non valide");
             document.getElementById('messagePseudo').style.color = 'rgb(151, 16, 16)'

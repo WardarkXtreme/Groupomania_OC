@@ -1,0 +1,60 @@
+@import './setting';
+
+.notVisible{
+    display: none;
+}
+.groupeComVisible{
+    display: flex;
+    animation: cache 1s linear forwards;
+    width: 100%;
+    align-items: center;
+    flex-direction: column-reverse;
+    z-index: -1;
+    margin-bottom: 20px;
+    .groupeIntCom{
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        justify-content: flex-end;
+        margin: 35px 0 0 0;
+        .globalCom{
+            display: flex;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            background-color: grey;
+            border-radius: 1em;
+            box-shadow: cyan 2px 2px 11px;
+            flex-wrap: wrap;
+            .groupeName{
+                display: flex;
+                width: 100%;
+            }
+            .groupeName p {
+                padding: 0 5px;
+                color: aqua;
+            }
+            .comArticle{
+                display: flex;
+                padding: 5px;
+                background: lightgray;
+                border-radius: 0 1em 0 1em;
+                width: 80%;
+                height: auto;
+            }
+        }
+        .uiLine{
+            animation: alim 0.9s infinite ease-in-out;
+            position: relative;
+            display: flex;
+            width: 70px;
+            height: 126px;
+            top: -80px;
+            left: 70%;
+            border-radius: 1em;
+            border: none;
+            background-color: lightgray;
+            z-index: -2;
+        }
+    }
+}

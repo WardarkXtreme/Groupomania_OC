@@ -71,15 +71,24 @@ exports.getAllPublication = (req, res) => {
 
 // fonction pour afficher une seule publication
 exports.getOnePublication = (req, res) => {
-    let sql = `SELECT * FROM publication INNER JOIN user ON publication.userID WHERE publicationID = ?`;
+    let sql = `SELECT * FROM groupomania.publication INNER JOIN groupomania.user ON publication.userID = user.userID WHERE publicationID=?`;
     connectDb.query(sql, [req.params.id], function(err, data) {
         if (err) {
             return res.status(400).json(err);
         }
-        res.status(200).json({data});
+        res.status(200).json(data);
     })
 };
 
+exports.getLike = (req, res) => {
+    let sql = `SELECT * FROM groupomania.like WHERE publicationID=?`
+    connectDb.query(sql, [req.params.id], function (err, data) {
+        if (err) {
+            return res.status(400).json({err})
+        };
+        res.status(200).json(data)
+    })
+};
 
 exports.managementLike = (req, res) => {
     const like = req.body.like;
@@ -116,8 +125,8 @@ exports.managementLike = (req, res) => {
     };
     if (like == 0) {
         
-        let sql = `DELETE FROM groupomania.like WHERE likeID = ?`;
-        connectDb.query(sql, [req.body.likeID], function (err, data) {
+        let sql = `DELETE FROM groupomania.like WHERE userID = ? AND publicationID=?`;
+        connectDb.query(sql, [req.params.id, req.body.publicationID], function (err, data) {
             if (err) {
                 res.status(400).json({err});
             };

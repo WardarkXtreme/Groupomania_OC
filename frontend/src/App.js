@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeSignIn from "./pages/HomeSignIn";
 import HomeSignUp from "./pages/HomeSignUp";
 import GeneralHome from "./pages/GeneralHome";
+import GeneralHomeOnePub from "./pages/GeneralHomeOnePub";
 
 const App = () => {
   return(
@@ -10,6 +11,7 @@ const App = () => {
         <Route path="/" exact element={<HomeSignIn />} />
         <Route path="/Signup" exact element={<HomeSignUp />} />
         <Route path="/home" exact element={<GeneralHome />} />
+        <Route path="/homePub" exact element={<GeneralHomeOnePub />} />
       </Routes>
     </BrowserRouter>
   )

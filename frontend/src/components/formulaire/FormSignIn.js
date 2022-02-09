@@ -4,6 +4,8 @@ import Axios from "axios";
 
 function FormSignIn() {
 
+    sessionStorage.clear();
+
     const url = "http://localhost:3000/api/auth/login"
     const [data, setData] = useState({
         email: "",
