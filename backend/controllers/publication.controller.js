@@ -15,7 +15,6 @@ date = (jma + " " + "à" + " " + hms);
 
 //Fonction pour nouvelle publication
 exports.createPublication = (req, res) => {
-    console.log (req.file)
     const publication = new Publication ({        
         userID: req.body.userID,
         title: req.body.title,
@@ -26,7 +25,7 @@ exports.createPublication = (req, res) => {
     let values = [publication.userID, publication.title, publication.article, publication.publicationPicture, date];
     connectDb.query(sql, [values], function(err, data) {
         if(err){
-            return res.status(400).json(console.log(err));
+            return res.status(400).json({ err });
         };
         res.status(201).json({message: "publication reussie"});
     });
@@ -41,7 +40,6 @@ exports.modifyPublication = (req, res) => {
             res.status(400).json({err})
         }
         res.status(200).json(data);
-        console.log(data)
     })
 
 };

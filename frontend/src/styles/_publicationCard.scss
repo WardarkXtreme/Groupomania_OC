@@ -1,14 +1,17 @@
 @import './setting';
+@import "./animation";
 
 .card{
+    z-index: 1;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     max-width: 600px;
-    margin-top: 50px;
+    margin-top: 85px;
+    margin-bottom: 50px;
     border-radius: 1.2em;
-    padding: 5px 0;
-    box-shadow: cyan 3px 3px 8px;
+    padding: 0;
+    box-shadow: black 3px 3px 8px;
     background-color: grey;
     text-decoration: none;
     font-weight: 300;
@@ -18,12 +21,17 @@
     .publicationName{
         display: flex;
         width: 100%;
-        padding: 0 5px;
+        padding: 0 15px;
+        margin-top: 15px;
         justify-content: space-between;
+        flex-wrap: wrap;
         .propertiesName{
             display: flex;
-            width: 135px;
+            width: auto;
             justify-content: space-between;
+            & p{
+                padding-right: 5px;
+            }
         }
     }
     .publicationPicture{
@@ -32,16 +40,73 @@
         height: auto;
         object-fit: contain;
     }
-    .date{
-        padding-left: 5px;
+    .publicationTitle{
+        display: flex;
         width: 100%;
+        justify-content: center;
+        padding-bottom: 0;
+        margin-top: 0;
+        color: white;
+        font-family: cursive;
+    }
+    .date{
+        padding-left: 15px;
+        width: 100%;
+        margin-top: 0;
+        font-size: 15px;
+        color: white;
     }
     .article{
         width: 100%;
+        padding-left: 15px;
+    }
+    .agencementDown{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 15px;
+        padding-right: 15px;
+        .agenceLike{
+            display: flex;
+            align-items: center;
+        }
+        .icoComment{
+            color: black;
+            &:hover{
+                transform: scale(1.23);
+                color: aqua;
+            }
+        }
     }
 
 }
 .properties{
     display: flex;
     flex-direction: column-reverse;
+}
+.proPic{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    top: 12px;
+    margin-top: 5px;
+    margin-bottom: -105px;
+    & img {
+        display: flex;
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: black 3px 3px 5px;
+        &:hover{
+            z-index: 2;
+            box-shadow: cyan 3px 3px 12px;
+        }
+    }
+}
+.cardHome:hover{
+    box-shadow: cyan 5px 5px 12px;
 }

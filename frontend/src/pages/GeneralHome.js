@@ -20,7 +20,10 @@ const GeneralHome = () => {
         setCache(!cache)
         setDysplayCreatePub(!dysplayCreatePub)
     }
-
+    const editProfil = () => {
+        const id = sessionStorage.getItem('user')
+        window.location = "/home/profil?"+id
+    }
     return (
         <div className="generalClass">
             <div className='headerHome'>
@@ -30,7 +33,10 @@ const GeneralHome = () => {
                         <h1 className="headerTitle">Groupomania</h1>
                     </div>
                     <div className="propertiesIcoOff">
-                        <FontAwesomeIcon icon={faPowerOff} className="icoPower" title="déconnexion" />
+                        <FontAwesomeIcon icon={faPowerOff} className="icoPower" title="déconnexion" onClick={() => {
+                            sessionStorage.clear()
+                            window.location = '/'
+                        }} />
                     </div>
                 </div>
             </div>
@@ -39,7 +45,7 @@ const GeneralHome = () => {
                     <div className={`notVisible ${cache ? "menu" : ""}`}>
                         <ul className="ulNav">
                             <li onClick={toggleCreatePub} className="liNav">Créer une publication</li>
-                            <li className="liNav">Modifier mon profil</li>
+                            <li onClick={editProfil} className="liNav">Voir mon profil</li>
                         </ul>
                     </div>
                     <div className="contentIcoDown">

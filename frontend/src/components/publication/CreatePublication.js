@@ -8,6 +8,7 @@ function CreateCard(){
     const [message, setMessage] = useState();
     const [previewFile, setPreviewFile] = useState();
     
+    
     let myID = JSON.parse(sessionStorage.getItem('user'));
     console.log(myID)
     const send = event => {
@@ -18,7 +19,7 @@ function CreateCard(){
         data.append("title", title);
         data.append("image", file);
         data.append("article", message);
-        console.log(file)
+        
         Axios({
             method: 'POST',
             headers: {
@@ -28,12 +29,10 @@ function CreateCard(){
             mode: 'cors',
             data: data
         })
-        .then((res) => {
-            console.log(res)
-            window.location.reload();
+        .then((res) => {  
+            console.log('publié')
         })
         .catch((err) => console.log({err}))
-
     }
 
     return(
@@ -41,14 +40,14 @@ function CreateCard(){
             <form className="propForm" action="/images" encType="multipart/form-data" method="post">
                 <div className="agencement">
                     <label className="titleForm" htmlFor="title">Votre titre</label>
-                    <input required="required" type="text" id="title" onChange={event => {
+                    <input required={true} type="text" id="title" onChange={event => {
                         const { value } = event.target;
                         setTitle(value)
                     }}/>
                 </div>
                 <div className="entryFile">
                     <label htmlFor="file"/>
-                    <input required="required" type="file" name="publicationPic" id="file" accept=".jpg, .png, .gif" onChange={event => {
+                    <input required={true} type="file" name="publicationPic" id="file" accept=".jpg, .png, .gif" onChange={event => {
                         const file = event.target.files[0];
                         const previewFile = URL.createObjectURL(event.target.files[0]);
                         setPreviewFile(previewFile)
@@ -58,7 +57,7 @@ function CreateCard(){
                 </div>
                 <div className="agencement">
                     <label htmlFor="article">Votre message</label>
-                    <input required="required" type="text" id="article" onChange={event => {
+                    <input required={true} type="text" id="article" onChange={event => {
                         const { value } = event.target;
                         setMessage(value)
                     }}/>

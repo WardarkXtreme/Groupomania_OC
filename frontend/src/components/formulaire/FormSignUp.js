@@ -9,6 +9,8 @@ function FormSignUp(){
     const [lastName, setlastName] = useState("");
     const [firstName, setfirstName] = useState("");
     const [pseudo, setpseudo] = useState("");
+    const [file, setFile] = useState();
+    const [previewFile, setPreviewFile] = useState();
     
     const [messageMail, setMessageMail] = useState("");
     const [messagePass, setMessagePass] = useState("");
@@ -108,8 +110,23 @@ function FormSignUp(){
             !regExPseudo.test(pseudo)) {
             return console.log("error");
         }
-        const url= "http://localhost:3000/api/auth/signup"
-        Axios.post(url,{ email: email, lastName: lastName, firstName: firstName, password: password, pseudo: pseudo })
+        const data = new FormData();
+        data.append("email", email);
+        data.append("password", password);
+        data.append("lastName", lastName);
+        data.append("firstName", firstName);
+        data.append("pseudo", pseudo);
+        data.append("image", file);
+
+        Axios({
+            method: 'POST',
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            url: "http://localhost:3000/api/auth/signup/",
+            mode: 'cors',
+            data: data
+        })
         .then(res=>{
             window.alert("Inscription réalisé avec succés, veuillez vous connecter")
             window.location = "/";
@@ -121,7 +138,15 @@ function FormSignUp(){
     return(
         <div className="Form">
             <Navigation />
+            <div className="pic"><img src={previewFile}/></div>
             <form onSubmit={(e)=>submit(e)} className="connectionForm">
+                <label htmlFor="file"/>
+                <input required={true} type="file" name="userPic" id="file" accept=".jpg, .png" onChange={event => {
+                    const file = event.target.files[0];
+                    const previewFile = URL.createObjectURL(event.target.files[0]);
+                    setPreviewFile(previewFile)
+                    setFile(file)
+                }}/>
                 <p id="messageMail">{messageMail}</p>
                 <input onChange={handleEmail} value={email} required={true} type="mail" id="email" name="email" placeholder="Votre email"/>
                 <p id="messagePass">{messagePass}</p>

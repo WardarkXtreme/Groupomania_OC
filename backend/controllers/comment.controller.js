@@ -34,7 +34,6 @@ exports.modifyComment = (req, res) => {
             res.status(400).json({err})
         }
         res.status(200).json(data);
-        console.log(data)
     })
 };
 
@@ -54,11 +53,12 @@ exports.deleteComment = (req, res) => {
 //_________________fonction d'affichage des commentaires d'une publication____________//
 
 exports.getCommentForOnePublication = (req, res) => {
-    let sql = `SELECT * FROM comment INNER JOIN user ON comment.userID WHERE publicationID=?`;
-    connectDb.query(sql, [req.params.id], function(err, result) {
+    
+    let sql = `SELECT * FROM groupomania.comment INNER JOIN groupomania.user ON comment.userID = user.userID WHERE publicationID=?`;
+    connectDb.query(sql, [req.params.id], function(err, data) {
         if (err) {
             return res.status(400).json(err);
         }
-        res.status(200).json(result);
+        res.status(200).json(data);
     })
 };

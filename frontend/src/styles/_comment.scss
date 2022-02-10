@@ -3,58 +3,139 @@
 .notVisible{
     display: none;
 }
-.groupeComVisible{
+.displayCom{
     display: flex;
-    animation: cache 1s linear forwards;
-    width: 100%;
-    align-items: center;
-    flex-direction: column-reverse;
-    z-index: -1;
-    margin-bottom: 20px;
-    .groupeIntCom{
+    .propGroupe{
         display: flex;
         width: 100%;
-        max-width: 600px;
-        justify-content: flex-end;
-        margin: 35px 0 0 0;
-        .globalCom{
+        flex-direction: column;
+        position: relative;
+        top: -2px;
+        .groupeComVisible{
             display: flex;
+            animation: cache 1s linear forwards;
             width: 100%;
-            max-width: 400px;
-            height: auto;
-            background-color: grey;
-            border-radius: 1em;
-            box-shadow: cyan 2px 2px 11px;
-            flex-wrap: wrap;
-            .groupeName{
+            align-items: center;
+            flex-direction: column;
+            z-index: -1;
+            margin-bottom: 20px;
+            .groupeIntCom{
                 display: flex;
                 width: 100%;
-            }
-            .groupeName p {
-                padding: 0 5px;
-                color: aqua;
-            }
-            .comArticle{
-                display: flex;
-                padding: 5px;
-                background: lightgray;
-                border-radius: 0 1em 0 1em;
-                width: 80%;
-                height: auto;
+                max-width: 600px;
+                justify-content: flex-end;
+                margin: -25px 0 0 0;
+                .globalCom{
+                    display: flex;
+                    width: 100%;
+                    max-width: 400px;
+                    height: fit-content;
+                    background-color: grey;
+                    border-radius: 1em;
+                    box-shadow: cyan 2px 2px 11px;
+                    flex-wrap: wrap;
+                    .groupeName{
+                        display: flex;
+                        width: 100%;
+                        align-items: center;
+                        & p{
+                            margin: 0;
+                            padding: 5px 5px;
+                            height: fit-content;
+                            color: aqua;
+                        }
+                        & img{
+                            display: flex;
+                            margin: 5px;
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+                    }
+                    .comArticle{
+                        display: flex;
+                        padding: 5px;
+                        border-radius: 0 1em 0 1em;
+                        width: 80%;
+                        height: fit-content;
+                        & p{
+                            margin: 0;
+                            padding: 5px;
+                            height: fit-content;
+                        }
+                    }
+                }
+                .uiLine{
+                    animation: alim 0.9s infinite ease-in-out;
+                    position: relative;
+                    display: flex;
+                    width: 50px;
+                    height: 134px;
+                    margin-top: -100px;
+                    margin-right: -420px;
+                    margin-bottom: 89px;
+                    border-radius: 1em;
+                    border: none;
+                    background-color: lightgray;
+                    z-index: -2;
+                }
             }
         }
-        .uiLine{
-            animation: alim 0.9s infinite ease-in-out;
-            position: relative;
-            display: flex;
-            width: 70px;
-            height: 126px;
-            top: -80px;
-            left: 70%;
-            border-radius: 1em;
+    }
+}
+
+.addComment{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    position: relative;
+    top: -47px;
+    .ui{
+        animation: alim 0.9s infinite ease-in-out;
+        position: relative;
+        display: flex;
+        width: 50px;
+        height: 152px;
+        margin-top: -106px;
+        margin-right: -420px;
+        border-radius: 1em;
+        border: none;
+        background-color: lightgray;
+        z-index: -2;
+    }
+    .formComment{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        background-color: grey;
+        border-radius: 1em;
+        box-shadow: cyan 2px 2px 11px;
+        flex-wrap: wrap;
+        & p {
+            font-size: 12px;
+            color: black;
+        }
+        & input{
+            background: transparent;
             border: none;
-            background-color: lightgray;
-            z-index: -2;
+            border-bottom: black 1px solid;
+            font-size: 20px;
+            &::placeholder{
+                color: lightgrey;
+            }
+            &:focus{
+                outline: none;
+            }
+        }
+        .btnCom{
+            display: flex;
+            justify-content: center;
+            border-radius: 2em;
+            max-width: 100px;
+            margin-top: 13px;
         }
     }
 }

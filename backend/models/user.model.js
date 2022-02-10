@@ -10,7 +10,7 @@ const User = function (user) {
     this.lastName = user.lastName;
     this.pseudo = user.pseudo;
     this.password = user.password;
-    this.profilePicture = user.profilePicture;
+    this.userPic = user.userPic;
     this.createdOn = user.createdOn;
     this.updateOn = user.updateOn;
 };

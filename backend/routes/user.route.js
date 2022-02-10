@@ -3,8 +3,9 @@ const router = express.Router();
 const userCtrl = require("../controllers/user.controller");
 const validatedEntrySignup = require("../middleware/validatedEntrySignup");
 const validatedEntryLogin = require("../middleware/validatedEntryLogin");
+const multer = require('../middleware/multerConfig')
 //Requête POST pour inscription d'un nouveau user
-router.post("/signup", validatedEntrySignup, userCtrl.signup); 
+router.post("/signup", multer, validatedEntrySignup, userCtrl.signup); 
 //Requête POST pour vérifier un user
 router.post("/login", validatedEntryLogin, userCtrl.login); 
 //requête DELETE pour suppression du compte

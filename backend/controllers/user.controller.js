@@ -24,10 +24,11 @@ exports.signup = (req, res) => {
             lastName: req.body.lastName,
             password: hash,
             pseudo: req.body.pseudo,
-            createdOn: date
+            createdOn: date,
+            userPic: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         });
-        let sql = `INSERT INTO User (email, firstName, lastName, password, pseudo, createdOn) VALUES (?)`;
-        let values = [user.email, user.firstName, user.lastName, user.password, user.pseudo, user.createdOn];
+        let sql = `INSERT INTO User (email, firstName, lastName, password, pseudo, createdOn, userPic) VALUES (?)`;
+        let values = [user.email, user.firstName, user.lastName, user.password, user.pseudo, user.createdOn, user.userPic];
         connectDb.query(sql, [values], function(err, data) {
             if(err) {
                 return res.status(400).json({err});
