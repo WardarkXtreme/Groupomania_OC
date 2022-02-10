@@ -9,6 +9,17 @@
     .propertiesHeader{
         width: 100%;
         display: flex;
+        .icoReturn{
+            display: flex;
+            color: white;
+            font-size: 1.5em;
+            height: 100%;
+            padding-left: 10px;
+            &:hover{
+                color: aqua;
+                transform: scale(1.2);
+            }
+        }
         .propertiesInHeader{
             display: flex;
             width: 100%;

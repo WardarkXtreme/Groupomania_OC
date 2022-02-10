@@ -1,5 +1,6 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import Comment from'../comment/Comment';
+import Header from '../profil/Header';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCommentDots, faHeart, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -23,8 +24,8 @@ function DisplayOnePublication(){
             }).then((result) => {
 
                 result.data.forEach(e => {
-                    const idCompare = sessionStorage.getItem('user');
-                    if(e.userID == idCompare) {
+                    const idCompare = JSON.parse(sessionStorage.getItem('user'));
+                    if(e.userID === idCompare) {
                         setAuthorizationPub(true);
                         console.log(authorizationPub)
                     }
@@ -42,8 +43,8 @@ function DisplayOnePublication(){
             }).then((result) => {
 
                 result.data.forEach(e => {
-                    const idCompare = sessionStorage.getItem('user');
-                    if(e.userID == idCompare) {
+                    const idCompare = JSON.parse(sessionStorage.getItem('user'));
+                    if(e.userID === idCompare) {
                         setLike(!like);
                     }
                 });
@@ -107,6 +108,7 @@ function DisplayOnePublication(){
     return (
         <Fragment>
             <div className='groupePC'>
+                <Header/>
                 <div className='properties'>
                     {onePublication.map(item => (
                         <div className='outCardard' key={item.publicationID}>

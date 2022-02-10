@@ -25,6 +25,20 @@
                 max-width: 600px;
                 justify-content: flex-end;
                 margin: -25px 0 0 0;
+                .uiLine{
+                    animation: alim 0.9s infinite ease-in-out;
+                    position: relative;
+                    display: flex;
+                    width: 50px;
+                    height: 115px;
+                    margin-top: -85px;
+                    margin-right: -420px;
+                    margin-bottom: 115px;
+                    border-radius: 1em;
+                    border: none;
+                    background-color: lightgray;
+                    z-index: -2;
+                }
                 .globalCom{
                     display: flex;
                     width: 100%;
@@ -65,20 +79,21 @@
                             height: fit-content;
                         }
                     }
-                }
-                .uiLine{
-                    animation: alim 0.9s infinite ease-in-out;
-                    position: relative;
-                    display: flex;
-                    width: 50px;
-                    height: 134px;
-                    margin-top: -100px;
-                    margin-right: -420px;
-                    margin-bottom: 89px;
-                    border-radius: 1em;
-                    border: none;
-                    background-color: lightgray;
-                    z-index: -2;
+                    #authIco{
+                        display: flex;
+                        align-items: center;
+                        width: 100%;
+                        justify-content: flex-end;
+                        padding-bottom: 5px;
+                    }
+                    #icoAuthComment{
+                        padding: 0 8px;
+                        cursor: pointer;
+                        z-index: 3;
+                        &:hover{
+                            color: aqua;
+                        }
+                    }
                 }
             }
         }
@@ -96,8 +111,8 @@
         position: relative;
         display: flex;
         width: 50px;
-        height: 152px;
-        margin-top: -106px;
+        height: 118px;
+        margin-top: -80px;
         margin-right: -420px;
         border-radius: 1em;
         border: none;

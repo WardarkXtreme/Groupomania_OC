@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 export default function Comment() {
 
     const [commentText, setCommentText] = useState("");
     const [comment, setComment] = useState([]);
-    const [maj, setMaj] = useState([]);
-    const [authorizationCom, setAuthorizationCom] = useState(false);
+    const [maj, setMaj] = useState([]);;
 
     function handleCommentText (e) {
         setCommentText(e.target.value)
@@ -46,15 +45,6 @@ export default function Comment() {
                 mode: 'cors'
             }).then((result) => {
                 setComment(result.data)
-                result.data.forEach(e => {
-                    const idCompare = sessionStorage.getItem('user');
-                    if(e.userID == idCompare) {
-                        setAuthorizationCom(true);
-                        console.log(authorizationCom)
-                    }else{
-                        setAuthorizationCom(false)
-                    }
-                });
                 console.log(result.data)
             })
             .catch(err => console.log ({err}))
@@ -62,23 +52,28 @@ export default function Comment() {
         fetchComment();
     }, [maj])
     
-
+    const test = ()=> {
+        console.log("camarche")
+    }
     return (
         <div className='propGroupe'>
             <div className="groupeComVisible">
                 {comment.map((com) => (
                     <div className='groupeIntCom' key={com.commentID}>
                         <div className='uiLine'></div>
-                        <div className='globalCom'>
+                        <div className='globalCom' id={com.userID}>
                             <div className='groupeName'>
-                                <img src={com.userPic}/>
+                                <img src={com.userPic} alt={com.lastName}/>
                                 <p>{com.firstName}</p>
                                 <p>{com.lastName}</p>
                             </div>
                             <div className='comArticle'>
                                 <p>{com.commentText}</p>
                             </div>
-                            {authorizationCom && <FontAwesomeIcon icon={faPen} className="icoComment" />} 
+                            <div id='authIco'>
+                                {com.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon icon={faPen} id="icoAuthComment"onClick={test}/>} 
+                                {com.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon icon={faTrash} id="icoAuthComment"/>} 
+                            </div>   
                         </div>
                     </div>
                 ))}

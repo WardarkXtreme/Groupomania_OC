@@ -1,4 +1,5 @@
 import React, {Fragment, useState, useEffect} from 'react';
+import Header from './Header'; 
 import axios from "axios";
 
 function DisplayProfil(){
@@ -25,6 +26,7 @@ function DisplayProfil(){
     return (
         <Fragment>
             <div className='contentProfil'>
+                <Header />
                 {profil.map(item => (
                     <div className='cardProfil' key={item.userID}>
                         <div>
@@ -33,7 +35,7 @@ function DisplayProfil(){
                         <div className='infoUser'>
                             <p>{item.firstName}</p>
                             <p>{item.lastName}</p>
-                            <p>{item.bio}</p>
+                            <p>{item.email}</p>
                         </div>
                     </div>
                 ))}    
