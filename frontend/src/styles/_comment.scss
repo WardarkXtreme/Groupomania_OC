@@ -9,36 +9,18 @@
         display: flex;
         width: 100%;
         flex-direction: column;
-        position: relative;
-        top: -2px;
         .groupeComVisible{
             display: flex;
             animation: cache 1s linear forwards;
             width: 100%;
             align-items: center;
             flex-direction: column;
-            z-index: -1;
-            margin-bottom: 20px;
             .groupeIntCom{
                 display: flex;
                 width: 100%;
                 max-width: 600px;
                 justify-content: flex-end;
-                margin: -25px 0 0 0;
-                .uiLine{
-                    animation: alim 0.9s infinite ease-in-out;
-                    position: relative;
-                    display: flex;
-                    width: 50px;
-                    height: 115px;
-                    margin-top: -85px;
-                    margin-right: -420px;
-                    margin-bottom: 115px;
-                    border-radius: 1em;
-                    border: none;
-                    background-color: lightgray;
-                    z-index: -2;
-                }
+                margin: 20px;
                 .globalCom{
                     display: flex;
                     width: 100%;
@@ -79,19 +61,19 @@
                             height: fit-content;
                         }
                     }
-                    #authIco{
+                    .authIco{
                         display: flex;
                         align-items: center;
                         width: 100%;
                         justify-content: flex-end;
                         padding-bottom: 5px;
-                    }
-                    #icoAuthComment{
-                        padding: 0 8px;
-                        cursor: pointer;
-                        z-index: 3;
-                        &:hover{
-                            color: aqua;
+                        .icoPen, .icoTrash{
+                            padding: 0 8px;
+                            cursor: pointer;
+                            z-index: 3;
+                            &:hover{
+                                color: aqua;
+                            }
                         }
                     }
                 }
@@ -104,21 +86,7 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    position: relative;
-    top: -47px;
-    .ui{
-        animation: alim 0.9s infinite ease-in-out;
-        position: relative;
-        display: flex;
-        width: 50px;
-        height: 118px;
-        margin-top: -80px;
-        margin-right: -420px;
-        border-radius: 1em;
-        border: none;
-        background-color: lightgray;
-        z-index: -2;
-    }
+    margin-bottom: 20px;
     .formComment{
         display: flex;
         flex-direction: column;
@@ -148,9 +116,19 @@
         .btnCom{
             display: flex;
             justify-content: center;
-            border-radius: 2em;
+            border-radius: 1em 0;
             max-width: 100px;
-            margin-top: 13px;
+            background: white;
+            margin: 7px 7px;
+            border: none;
+            box-shadow: 3px 3px 3px cyan;
+            &:hover{
+                transform: scale(1.1);
+            }
+            &:active{
+                transform: scale(1);
+            }
+            
         }
     }
 }

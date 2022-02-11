@@ -1,5 +1,4 @@
-import React, {Fragment, useState, useEffect} from 'react';
-import Header from './Header'; 
+import React, {Fragment, useState, useEffect} from 'react'; 
 import axios from "axios";
 
 function DisplayProfil(){
@@ -26,19 +25,20 @@ function DisplayProfil(){
     return (
         <Fragment>
             <div className='contentProfil'>
-                <Header />
-                {profil.map(item => (
-                    <div className='cardProfil' key={item.userID}>
-                        <div>
-                            <img src={item.userPic} alt={item.lastName}/>
+                <div className='card'>
+                    {profil.map(item => (
+                        <div className='cardProfil' key={item.userID}>
+                            <div>
+                                <img src={item.userPic} alt={item.lastName} className="publicationPicture"/>
+                            </div>
+                            <div className='infoUser'>
+                                <p>nom: {item.firstName}</p>
+                                <p>prénom: {item.lastName}</p>
+                                <p>contact: {item.email}</p>
+                            </div>
                         </div>
-                        <div className='infoUser'>
-                            <p>{item.firstName}</p>
-                            <p>{item.lastName}</p>
-                            <p>{item.email}</p>
-                        </div>
-                    </div>
-                ))}    
+                    ))}
+                </div>        
             </div>
         </Fragment>
     );

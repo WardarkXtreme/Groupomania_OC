@@ -8,7 +8,7 @@
     width: 100%;
     max-width: 600px;
     margin-top: 85px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     border-radius: 1.2em;
     padding: 0;
     box-shadow: black 3px 3px 8px;
@@ -80,6 +80,9 @@
         }
     }
 
+}
+.infoUser{
+    padding-left: 10px;
 }
 .properties{
     display: flex;

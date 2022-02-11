@@ -1,16 +1,16 @@
 import React from "react";
 import { RequireAuth } from "../components/Secure/requireAuth";
-import GetProfil from "../components/profil/GetProfil"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faAngleDown, faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import GetProfil from "../components/profil/GetProfil";
+import Header from '../components/profil/Header';
 
 const Profil = () => {
     RequireAuth()
     
     return (
-        <>
+        <div className="generalClass">
+            <Header/>
             <GetProfil />
-        </>
+        </div>
     )
 }
 

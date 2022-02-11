@@ -27,7 +27,7 @@ exports.createComment = (req, res) => {
 }
 //_______________fonction pour modification d'un commentaire________//
 exports.modifyComment = (req, res) => {
-    let sql = `UPDATE comment SET commentText = ? WHERE userID = ?`;
+    let sql = `UPDATE groupomania.comment SET commentText = ? WHERE commentID = ?`;
     let values = [req.body.commentText, req.params.id];
     connectDb.query(sql, values, function (err, data) {
         if(err){

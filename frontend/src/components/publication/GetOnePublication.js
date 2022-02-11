@@ -1,6 +1,5 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import Comment from'../comment/Comment';
-import Header from '../profil/Header';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCommentDots, faHeart, faPen, faTrash } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -108,7 +107,6 @@ function DisplayOnePublication(){
     return (
         <Fragment>
             <div className='groupePC'>
-                <Header/>
                 <div className='properties'>
                     {onePublication.map(item => (
                         <div className='outCardard' key={item.publicationID}>

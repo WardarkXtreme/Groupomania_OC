@@ -15,6 +15,7 @@
             font-size: 1.5em;
             height: 100%;
             padding-left: 10px;
+            cursor: pointer;
             &:hover{
                 color: aqua;
                 transform: scale(1.2);
@@ -98,6 +99,12 @@
             }
         }
     }
+}
+.contentProfil{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
 }
 .icodown{
     cursor: pointer;
