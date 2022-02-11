@@ -10,8 +10,14 @@ function DisplayOnePublication(){
     const [like, setLike] = useState();
     const [cache, setCache] = useState();
     const [maj, setMaj] = useState([]);
-    const [authorizationPub, setAuthorizationPub] = useState(false)
+    const [authorizationPub, setAuthorizationPub] = useState(false);
     console.log(authorizationPub)
+
+    const [putPublication, setPutPublication] = useState(true);
+    const [champTitlePut, setChampTitlePut] = useState(true);
+    const [champArticlePut, setChampArticlePut] = useState(true);
+    const [publicationTitle, setPublicationTitle] = useState("");
+    const [publicationArticle, setPublicationArticle] = useState("");
     
     useEffect(() => {
 
@@ -56,6 +62,32 @@ function DisplayOnePublication(){
         fetchLike();
     }, [maj]);   
 
+    function handlePutTitle (e) {
+
+        setPublicationTitle(e.target.value)
+        const str = JSON.stringify(publicationTitle)
+        if(`${str.length}` > 4){
+            setChampTitlePut(false)
+        }
+        else if(`${str.length}` < 4) {
+            setChampTitlePut(true)
+        }
+        console.log(champTitlePut)
+    }
+
+    function handlePutArticle (e) {
+
+        setPublicationArticle(e.target.value)
+        const str = JSON.stringify(publicationArticle)
+        if(`${str.length}` > 4){
+            setChampArticlePut(false)
+        }
+        else if(`${str.length}` < 4) {
+            setChampArticlePut(true)
+        }
+        console.log(champArticlePut)
+    }
+
     const toggle = () => {
 
         setLike(!like)
@@ -99,10 +131,43 @@ function DisplayOnePublication(){
         }
     };
 
+    const put = () => {
+        setPutPublication(!putPublication)
+    }
+
+    const modifyPublication = (e) => {
+        e.preventDefault()
+        if(!champArticlePut && !champTitlePut) {
+
+            const idServiable = window.location.search.slice(1);
+            axios({
+                url :'http://localhost:3000/api/pub/'+idServiable,  
+                mode: 'cors',
+                method: 'PUT',
+                data: { title: publicationTitle, article: publicationArticle}
+            }).then((result) => {
+                setMaj(result.data) 
+                setPutPublication(!putPublication)
+            })
+            .catch(err => console.log ({err}))
+        }
+    }
+
+    const deletePublication = () => {
+        const idServiable = window.location.search.slice(1);
+        axios({
+            url :'http://localhost:3000/api/pub/del/'+idServiable,  
+            mode: 'cors',
+            method: 'DELETE'
+        }).then(() => {
+            window.location = '/home' 
+        })
+        .catch(err => console.log ({err}))
+    }
+
     const toggleCom = () => {
         setCache(!cache)
     }
-    
 
     return (
         <Fragment>
@@ -125,10 +190,24 @@ function DisplayOnePublication(){
                                         <p className='publicationPseudo'>{item.pseudo}</p>
                                     </div>
                                 </div> 
-                                <h2 className='publicationTitle'>{item.title}</h2>
+                                {!putPublication ?
+                                    <div className='putTitle'>
+                                        <input type="text" onChange={handlePutTitle} placeholder={item.title}/>  
+                                    </div>    
+                                    :
+                                    <h2 className='publicationTitle'>{item.title}</h2>
+                                }
                                 <img className='publicationPicture' src={item.publicationPicture} alt={item.title}/>
                                 <p className='date'>{item.createdOn}</p>
-                                <p className='article'>{item.article}</p>
+                                {!putPublication ?
+                                    <div className='putTitle'>
+                                        <input type="text" onChange={handlePutArticle} placeholder={item.article}/>
+                                        {!champArticlePut && !champTitlePut && <button className='btnCom' onClick={modifyPublication}>modifier</button>}  
+                                    </div>    
+                                    :
+                                    <p className='article'>{item.article}</p>
+                                }
+                                
                                 <div className='agencementDown'>
                                     <div className='agenceLike'>  
                                         <div className={`dislike ${like ? "like" : ""}`}>
@@ -137,8 +216,8 @@ function DisplayOnePublication(){
                                         <p id='countLike'>{item.like}</p>
                                     </div>    
                                     <FontAwesomeIcon onClick={toggleCom} icon={faCommentDots} className="icoComment" />
-                                    {authorizationPub && <FontAwesomeIcon onClick={toggleCom} icon={faPen} className="icoComment" />}
-                                    {authorizationPub && <FontAwesomeIcon onClick={toggleCom} icon={faTrash} className="icoComment" />}
+                                    {authorizationPub && <FontAwesomeIcon onClick={put} icon={faPen} className="icoComment" />}
+                                    {authorizationPub && <FontAwesomeIcon onClick={deletePublication} icon={faTrash} className="icoComment" />}
                                 </div>
                             </div>
                         </div>

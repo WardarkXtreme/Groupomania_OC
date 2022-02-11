@@ -75,8 +75,7 @@ export default function Comment() {
         e.preventDefault()
         
         if (!champVidePut){
-
-            
+  
             axios({
                 method: 'PUT',
                 url: "http://localhost:3000/api/com/"+verifId,
