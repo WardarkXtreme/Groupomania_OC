@@ -139,8 +139,7 @@ function DisplayProfil(){
                                 }
                             </div>
                             <div className='PutFile'>
-                                {item.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon onClick={handlePutPic} icon={faFileImport} className='icoFile'/>}
-                                {admin === 1 && <FontAwesomeIcon onClick={handlePutPic} icon={faFileImport} className='icoFile'/>}
+                                {(item.userID === JSON.parse(sessionStorage.getItem('user')) || admin === 1) && <FontAwesomeIcon onClick={handlePutPic} icon={faFileImport} className='icoFile'/>}
                             </div>
                             <div className='infoUser'>
                                 <div className='alignP'>
@@ -151,8 +150,7 @@ function DisplayProfil(){
                                     <p>prénom:</p>
                                     <p className='aqua'>{item.lastName}</p>
                                 </div>
-                                    {item.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon onClick={handlePutPseudo} icon={faPen} className='icoPen'/>}
-                                    {admin === 1 && <FontAwesomeIcon onClick={handlePutPseudo} icon={faPen} className='icoPen'/>}
+                                    {(item.userID === JSON.parse(sessionStorage.getItem('user')) || admin === 1) && <FontAwesomeIcon onClick={handlePutPseudo} icon={faPen} className='icoPen'/>}
                                 {putPseudo ?
                                     <div>
                                         <input className='putContent' type="text" onChange={handlePutTextPseudo} placeholder={item.pseudo}/>

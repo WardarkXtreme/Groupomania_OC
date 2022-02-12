@@ -173,11 +173,8 @@ export default function Comment() {
                                 
                             </div>
                             <div id={com.commentID} className='authIco'>
-                                {com.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon onClick={modify} icon={faPen} id={com.commentID} className='icoPen'/>} 
-                                {com.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon onClick={delCom} icon={faTrash} id={com.commentID} className="icoTrash"/>} 
-                                {admin === 1 && <FontAwesomeIcon onClick={modify} icon={faPen} id={com.commentID} className='icoPen'/>} 
-                                {admin === 1 && <FontAwesomeIcon onClick={delCom} icon={faTrash} id={com.commentID} className="icoTrash"/>} 
-
+                                {(com.userID === JSON.parse(sessionStorage.getItem('user')) || admin === 1) && <FontAwesomeIcon onClick={modify} icon={faPen} id={com.commentID} className='icoPen'/>} 
+                                {(com.userID === JSON.parse(sessionStorage.getItem('user')) || admin === 1) && <FontAwesomeIcon onClick={delCom} icon={faTrash} id={com.commentID} className="icoTrash"/>} 
                             </div>   
                         </div>
                     </div>

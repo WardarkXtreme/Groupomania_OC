@@ -249,10 +249,8 @@ function DisplayOnePublication(){
                                         <p id='countLike'>{item.like}</p>
                                     </div>    
                                     <FontAwesomeIcon onClick={toggleCom} icon={faCommentDots} className="icoComment" />
-                                    {authorizationPub && <FontAwesomeIcon onClick={put} icon={faPen} className="icoComment" />}
-                                    {authorizationPub && <FontAwesomeIcon onClick={deletePublication} icon={faTrash} className="icoComment" />}
-                                    {admin === 1 && <FontAwesomeIcon onClick={put} icon={faPen} className="icoComment" />}
-                                    {admin === 1 && <FontAwesomeIcon onClick={deletePublication} icon={faTrash} className="icoComment" />}
+                                    {(authorizationPub || admin === 1) && <FontAwesomeIcon onClick={put} icon={faPen} className="icoComment" />}
+                                    {(authorizationPub || admin === 1) && <FontAwesomeIcon onClick={deletePublication} icon={faTrash} className="icoComment" />}
                                 </div>
                             </div>
                         </div>
