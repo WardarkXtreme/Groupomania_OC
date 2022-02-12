@@ -1,0 +1,5 @@
+HOST= mon localhost
+PASS_DB= mon mot de passe bd
+USER_DB= utilisateur bd
+DB=groupomania
+SECRET_T= clef de déchiffrement du token

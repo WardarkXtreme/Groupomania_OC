@@ -1,8 +1,6 @@
 const connectDb = require("../db-Connect/dbConnect.js");
 const Publication = require("../models/publication.model");
 const Like = require("../models/like.model");
-const fs = require('fs');
-
 
 //___________Appel du temps sur la variable date__________//
 let date;
