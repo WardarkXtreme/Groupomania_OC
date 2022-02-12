@@ -1,0 +1,30 @@
+bonjour et bienvenue sur le projet 7 Groupomania d'Openclassrooms.
+
+pour l'utilisation:
+
+veuillez cloner ce repo dans le fichier vide de votre choix.
+
+veuillez installer la base de donnée, elle est en .sql,
+votre base devra etre identique à =>
+
+    host: 'localhost',
+    database: 'groupomania',
+    user: 'root',
+    password: 'TrueConnecteD1',
+
+une fois cela fais vous pouvez =>
+
+    faire un cd backend puis npm i
+    une fois cela fait lancer la commande nodemon server
+
+une fois cela fais vous pouvez =>
+
+    faire un cd frontend puis npm i
+    une fois cela fait lancer la commande npm start
+
+inscrivez vous ou choisissez la conexion avec administrateur user =>
+
+    id: groupomania@gmail.com
+    mdp: administrateur 
+
+Enjoy !
