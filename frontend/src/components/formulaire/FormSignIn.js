@@ -18,6 +18,8 @@ function FormSignIn() {
             window.location = "/home"
             sessionStorage.setItem('user', res.data.userID)
             sessionStorage.setItem('isConnected', 'true')
+            sessionStorage.setItem('admin', res.data.userAdmin)
+            sessionStorage.setItem('jwt', res.data.token)
             window.confirm("connecté");
         })
         .catch(error => {

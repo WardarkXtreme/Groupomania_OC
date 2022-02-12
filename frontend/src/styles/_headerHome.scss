@@ -62,10 +62,17 @@
     align-items: center;
     .contentIcoDown{
         display: flex;
-        background: aqua;
+        background: linear-gradient(to left, darkgrey, black);
         width: 100%;
         border-radius: 0em 0em 1em 1em;
         justify-content: center;
+        .icodown{
+            color: aquamarine;
+            &:hover{
+                transform: scale(1.2);
+                color: aqua;
+            }
+        }
     }
 }
 .propertiesContent{

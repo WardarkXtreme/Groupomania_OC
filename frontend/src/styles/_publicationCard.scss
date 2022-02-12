@@ -81,6 +81,15 @@
     }
 
 }
+.putDiv{
+    display: flex;
+    width: 100%;
+    .putContent{
+        display: flex;
+        width: 100%;
+        padding: 5px;
+    }
+}
 .infoUser{
     padding-left: 10px;
 }
@@ -112,4 +121,49 @@
 }
 .cardHome:hover{
     box-shadow: cyan 5px 5px 12px;
+}
+.cardProfil{
+    color: black;
+    .PutFile{
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+        & .icoFile{
+            padding-right: 15px;
+            padding-top: 15px;
+            &:hover{
+                color: aqua;
+                transform: scale(1.2);
+            }
+        }
+    }
+    .infoUser{
+        display: flex;
+        flex-direction: column;
+        .alignP{
+            display: flex;
+            flex-wrap: wrap;
+            & p{
+                padding: 5px;
+            }
+        }
+        .putPseudo{
+            display: flex;
+            align-items: center;
+            & p{
+                padding: 5px;
+            }
+            & .icoPen{
+                padding-left: 7px;
+                &:hover{
+                    color: aqua;
+                    transform: scale(1.2);
+                }
+            }
+        }
+        .aqua{
+            color: aqua;
+        }
+    }
+    
 }

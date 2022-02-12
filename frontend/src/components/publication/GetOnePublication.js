@@ -7,6 +7,7 @@ import axios from "axios";
 function DisplayOnePublication(){
 
     const [onePublication, setOnePublication] = useState([]);
+    const [admin, setAdmin] = useState();
     const [like, setLike] = useState();
     const [cache, setCache] = useState();
     const [maj, setMaj] = useState([]);
@@ -19,12 +20,18 @@ function DisplayOnePublication(){
     const [publicationTitle, setPublicationTitle] = useState("");
     const [publicationArticle, setPublicationArticle] = useState("");
     
+    
+
     useEffect(() => {
 
         const fetchOnePublication = async () => {
             const idServiable = window.location.search.slice(1);
+            const jwt = sessionStorage.getItem('jwt')
             await axios({
-                url :'http://localhost:3000/api/pub/'+idServiable,  
+                url :'http://localhost:3000/api/pub/'+idServiable,
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                },  
                 mode: 'cors'
             }).then((result) => {
 
@@ -42,8 +49,12 @@ function DisplayOnePublication(){
 
         const fetchLike = () => {
             const idServiable = window.location.search.slice(1);
+            const jwt = sessionStorage.getItem('jwt')
             axios({
-                url :'http://localhost:3000/api/pub/like/'+idServiable,  
+                url :'http://localhost:3000/api/pub/like/'+idServiable,
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                },  
                 mode: 'cors'
             }).then((result) => {
 
@@ -58,8 +69,14 @@ function DisplayOnePublication(){
             .catch(err => console.log ({err}))
         };
 
+        const verif = () => {
+            const verifAdmin = JSON.parse(sessionStorage.getItem('admin'));
+            setAdmin(verifAdmin);
+        }
+
         fetchOnePublication();
         fetchLike();
+        verif();
     }, [maj]);   
 
     function handlePutTitle (e) {
@@ -96,12 +113,16 @@ function DisplayOnePublication(){
             setLike(!like)
             const idPub = window.location.search.slice(1);
             const userId = sessionStorage.getItem('user')
+            const jwt = sessionStorage.getItem('jwt')
             let dataLike = {
                 like: 0,
                 publicationID: idPub 
             }
             axios({
-                url :'http://localhost:3000/api/pub/like/'+userId,  
+                url :'http://localhost:3000/api/pub/like/'+userId, 
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                }, 
                 mode: 'cors',
                 method: 'POST',
                 data: dataLike
@@ -114,12 +135,16 @@ function DisplayOnePublication(){
             setLike(like)
             const idPub = window.location.search.slice(1);
             const userId = sessionStorage.getItem('user')
+            const jwt = sessionStorage.getItem('jwt')
             let dataLike = {
                 like: 1,
                 publicationID: idPub 
             }
             axios({
-                url :'http://localhost:3000/api/pub/like/'+userId,  
+                url :'http://localhost:3000/api/pub/like/'+userId,
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                },  
                 mode: 'cors',
                 method: 'POST',
                 data: dataLike
@@ -140,8 +165,12 @@ function DisplayOnePublication(){
         if(!champArticlePut && !champTitlePut) {
 
             const idServiable = window.location.search.slice(1);
+            const jwt = sessionStorage.getItem('jwt')
             axios({
-                url :'http://localhost:3000/api/pub/'+idServiable,  
+                url :'http://localhost:3000/api/pub/'+idServiable,
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                },  
                 mode: 'cors',
                 method: 'PUT',
                 data: { title: publicationTitle, article: publicationArticle}
@@ -155,8 +184,12 @@ function DisplayOnePublication(){
 
     const deletePublication = () => {
         const idServiable = window.location.search.slice(1);
+        const jwt = sessionStorage.getItem('jwt')
         axios({
-            url :'http://localhost:3000/api/pub/del/'+idServiable,  
+            url :'http://localhost:3000/api/pub/del/'+idServiable, 
+            headers: {
+                'Authorization': 'Bearer ' + jwt
+            }, 
             mode: 'cors',
             method: 'DELETE'
         }).then(() => {
@@ -191,8 +224,8 @@ function DisplayOnePublication(){
                                     </div>
                                 </div> 
                                 {!putPublication ?
-                                    <div className='putTitle'>
-                                        <input type="text" onChange={handlePutTitle} placeholder={item.title}/>  
+                                    <div className='putDiv'>
+                                        <input className="putContent" type="text" onChange={handlePutTitle} placeholder={item.title}/>  
                                     </div>    
                                     :
                                     <h2 className='publicationTitle'>{item.title}</h2>
@@ -200,8 +233,8 @@ function DisplayOnePublication(){
                                 <img className='publicationPicture' src={item.publicationPicture} alt={item.title}/>
                                 <p className='date'>{item.createdOn}</p>
                                 {!putPublication ?
-                                    <div className='putTitle'>
-                                        <input type="text" onChange={handlePutArticle} placeholder={item.article}/>
+                                    <div className='putDiv'>
+                                        <input className='putContent' type="text" onChange={handlePutArticle} placeholder={item.article}/>
                                         {!champArticlePut && !champTitlePut && <button className='btnCom' onClick={modifyPublication}>modifier</button>}  
                                     </div>    
                                     :
@@ -218,6 +251,8 @@ function DisplayOnePublication(){
                                     <FontAwesomeIcon onClick={toggleCom} icon={faCommentDots} className="icoComment" />
                                     {authorizationPub && <FontAwesomeIcon onClick={put} icon={faPen} className="icoComment" />}
                                     {authorizationPub && <FontAwesomeIcon onClick={deletePublication} icon={faTrash} className="icoComment" />}
+                                    {admin === 1 && <FontAwesomeIcon onClick={put} icon={faPen} className="icoComment" />}
+                                    {admin === 1 && <FontAwesomeIcon onClick={deletePublication} icon={faTrash} className="icoComment" />}
                                 </div>
                             </div>
                         </div>

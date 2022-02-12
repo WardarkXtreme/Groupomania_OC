@@ -13,6 +13,7 @@ export default function Comment() {
     const [maj, setMaj] = useState([]);
     const [champVide, setChampVide] = useState(true);
     const [champVidePut, setChampVidePut] = useState(true);
+    const [admin, setAdmin] = useState();
 
 
 
@@ -46,6 +47,7 @@ export default function Comment() {
         if (!champVide){
             const userId = sessionStorage.getItem('user');
             const idPub = window.location.search.slice(1);
+            const jwt = sessionStorage.getItem('jwt')
             const com = {
                 publicationID: idPub,
                 commentText: commentText
@@ -53,6 +55,9 @@ export default function Comment() {
             axios({
                 method: 'POST',
                 url: "http://localhost:3000/api/com/"+userId,
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                },
                 mode: 'cors',
                 data: com
             })
@@ -73,12 +78,16 @@ export default function Comment() {
 
     const putCom = (e) => {
         e.preventDefault()
+        const jwt = sessionStorage.getItem('jwt')
         
         if (!champVidePut){
   
             axios({
                 method: 'PUT',
                 url: "http://localhost:3000/api/com/"+verifId,
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                },
                 mode: 'cors',
                 data: {commentText: commentTextPut}
             })
@@ -93,12 +102,16 @@ export default function Comment() {
         }
     }
     
-    const delCom = (e)=> {
+    const delCom = (e) => {
         const commentId = e.currentTarget.id
+        const jwt = sessionStorage.getItem('jwt')
 
         axios({
             method: 'DELETE',
             url: "http://localhost:3000/api/com/"+commentId,
+            headers: {
+                'Authorization': 'Bearer ' + jwt
+            },
             mode: 'cors'
         })
         .then(res=>{
@@ -111,9 +124,13 @@ export default function Comment() {
 
     useEffect(() => {
         const idServiable = window.location.search.slice(1);
+        const jwt = sessionStorage.getItem('jwt')
         const fetchComment = () => {
             axios({
-                url :'http://localhost:3000/api/com/'+idServiable,  
+                url :'http://localhost:3000/api/com/'+idServiable,
+                headers: {
+                    'Authorization': 'Bearer ' + jwt
+                },  
                 mode: 'cors'
             }).then((result) => {
                 setComment(result.data)
@@ -121,7 +138,14 @@ export default function Comment() {
             })
             .catch(err => console.log ({err}))
         };
+
+        const verif = () => {
+            const verifAdmin = JSON.parse(sessionStorage.getItem('admin'));
+            setAdmin(verifAdmin);
+        };
+
         fetchComment();
+        verif();
     }, [maj])
     
     
@@ -139,8 +163,8 @@ export default function Comment() {
                             </div>
                             <div className='comArticle'>
                                 {com.commentID === verifId && !putComment ?
-                                    <div>
-                                        <input type="text" onChange={handlePutCommentText} placeholder={com.commentText}/>
+                                    <div className='putDiv'>
+                                        <input className='putContent' type="text" onChange={handlePutCommentText} placeholder={com.commentText}/>
                                         {!champVidePut && <button className='btnCom' onClick={putCom}>modifier</button>}  
                                     </div>    
                                     :
@@ -151,6 +175,9 @@ export default function Comment() {
                             <div id={com.commentID} className='authIco'>
                                 {com.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon onClick={modify} icon={faPen} id={com.commentID} className='icoPen'/>} 
                                 {com.userID === JSON.parse(sessionStorage.getItem('user')) && <FontAwesomeIcon onClick={delCom} icon={faTrash} id={com.commentID} className="icoTrash"/>} 
+                                {admin === 1 && <FontAwesomeIcon onClick={modify} icon={faPen} id={com.commentID} className='icoPen'/>} 
+                                {admin === 1 && <FontAwesomeIcon onClick={delCom} icon={faTrash} id={com.commentID} className="icoTrash"/>} 
+
                             </div>   
                         </div>
                     </div>

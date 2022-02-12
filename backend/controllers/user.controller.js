@@ -2,6 +2,7 @@ const connectDb = require('../db-Connect/dbConnect.js');
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
 require('dotenv').config();
 
 
@@ -57,6 +58,7 @@ exports.login = (req, res) => {
                 res.status(200).json({
                     userID: data[0].userID,
                     lastName: data[0].lastName,
+                    userAdmin: data[0].userAdmin,
                     token: jwt.sign(
                         {userID : data[0].userID, lastName: data[0].lastName},
                         process.env.SECRET_T,
@@ -86,6 +88,37 @@ exports.getOneUser = (req, res) => {
     if (err) {
         return res.status(404).json({err});
     }
-    res.status(200).json(data);
+    res.status(200).json([{
+        userID: data[0].userID,
+        lastName: data[0].lastName,
+        firstName: data[0].firstName,
+        email: data[0].email,
+        pseudo: data[0].pseudo,
+        userPic: data[0].userPic
+    }]);
   });
 };
+
+exports.modifyUser = (req, res) => {
+
+    if (req.file) {
+
+        const userPic = `${req.protocol}://${req.get('host')}/images/${req.file.filename}` 
+        let sql = `UPDATE User SET userPic = ? WHERE userID = ?`
+        connectDb.query(sql, [userPic, req.params.id], function (err, data) {
+            if (err) {
+                return res.status(400).json({err})
+            }
+            res.status(200).json(data)
+        })
+    }else{
+        let sql = `UPDATE user SET pseudo = ? WHERE userID = ?`
+    
+        connectDb.query(sql, [req.body.pseudo, req.params.id], function (err, data) {
+            if (err) {
+                return res.status(400).json({err})
+            }
+            res.status(200).json(data)
+        })
+    }
+}

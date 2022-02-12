@@ -10,7 +10,7 @@ function CreateCard(){
     
     
     let myID = JSON.parse(sessionStorage.getItem('user'));
-    console.log(myID)
+    
     const send = event => {
         
         event.preventDefault()
@@ -20,16 +20,19 @@ function CreateCard(){
         data.append("image", file);
         data.append("article", message);
         
+        const jwt = sessionStorage.getItem('jwt')
         Axios({
             method: 'POST',
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + jwt
             },
             url: "http://localhost:3000/api/pub/",
             mode: 'cors',
             data: data
         })
-        .then((res) => {  
+        .then((res) => { 
+            window.location.reload() 
             console.log('publié')
         })
         .catch((err) => console.log({err}))
@@ -63,7 +66,7 @@ function CreateCard(){
                     }}/>
                 </div>
                 <div className="agencement1">
-                    <button className="btnCP" onClick={send}>Publier</button>
+                    <button id="forListen" className="btnCP" onClick={send}>Publier</button>
                 </div>
             </form>
         </div>
