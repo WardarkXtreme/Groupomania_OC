@@ -31,7 +31,7 @@ CREATE TABLE `comment` (
   `updateOn` varchar(25) NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`commentID`),
   UNIQUE KEY `commentID_UNIQUE` (`commentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (56,128,100,'MDR !','12-02-2022 à 12:14:13','0000-00-00 00:00:00'),(57,127,101,'ouaip, c\'est moi le boss ! 2+2=4 ;)','12-02-2022 à 12:14:13','0000-00-00 00:00:00'),(58,129,100,'le melon du type !','12-02-2022 à 12:14:13','0000-00-00 00:00:00'),(59,129,101,'non en Objet \"string\" 2+2=22','12-02-2022 à 12:14:13','0000-00-00 00:00:00'),(60,127,102,'Super !!!!','12-02-2022 à 12:14:13','0000-00-00 00:00:00');
+INSERT INTO `comment` VALUES (62,142,107,'super, mes félicitations !!','13-02-2022 à 16:44:23','0000-00-00 00:00:00'),(63,143,107,'ça se fête !','13-02-2022 à 17:02:44','0000-00-00 00:00:00'),(64,143,108,'Carrément, j\'arrive ! ','13-02-2022 à 17:02:44','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +57,7 @@ CREATE TABLE `like` (
   `publicationID` int NOT NULL,
   PRIMARY KEY (`likeID`),
   UNIQUE KEY `likeID_UNIQUE` (`likeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=204 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `like` (
 
 LOCK TABLES `like` WRITE;
 /*!40000 ALTER TABLE `like` DISABLE KEYS */;
-INSERT INTO `like` VALUES (197,127,100),(198,128,100),(199,127,101),(200,129,100),(201,129,101),(202,129,102),(203,127,102);
+INSERT INTO `like` VALUES (207,141,107),(208,142,107),(209,142,108),(210,143,107),(211,143,108),(212,143,109);
 /*!40000 ALTER TABLE `like` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `publication` (
   `like` varchar(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`publicationID`),
   UNIQUE KEY `publicationID_UNIQUE` (`publicationID`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `publication` (
 
 LOCK TABLES `publication` WRITE;
 /*!40000 ALTER TABLE `publication` DISABLE KEYS */;
-INSERT INTO `publication` VALUES (100,127,'12-02-2022 à 12:14:13','0000-00-00 00:00:00','Je suis le premier !','C\'est moi le boss, le premier à avoir publier !','http://localhost:3000/images/giphy.gif1644666155512.undefined','3'),(101,128,'12-02-2022 à 12:14:13','0000-00-00 00:00:00','Problème...','Quelqu\'un de bon en maths ici ??!','http://localhost:3000/images/giphy_(2).gif1644666274518.undefined','2'),(102,129,'12-02-2022 à 12:14:13','0000-00-00 00:00:00','Keep calm and love programming !','V2.0 du site Groupomania, fait !! enjoy !','http://localhost:3000/images/work.gif1644666725137.undefined','2');
+INSERT INTO `publication` VALUES (107,141,'13-02-2022 à 16:44:23','0000-00-00 00:00:00','Salut tout le monde ✌','je viens d\'être embauchée, haha !','http://localhost:3000/images/work.gif1644767853566.undefined','3'),(108,142,'13-02-2022 à 16:44:23','0000-00-00 00:00:00','heure de café','Oui, il est grand temp de boire un café, qui est chaud ??? ','http://localhost:3000/images/coffee.gif1644768027527.undefined','2'),(109,143,'13-02-2022 à 17:02:44','0000-00-00 00:00:00','problème','Qui est bon en maths ici please ????','http://localhost:3000/images/giphy_(2).gif1644768239290.undefined','1');
 /*!40000 ALTER TABLE `publication` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -121,7 +121,7 @@ CREATE TABLE `user` (
   `bio` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`userID`),
   UNIQUE KEY `userID_UNIQUE` (`userID`)
-) ENGINE=InnoDB AUTO_INCREMENT=130 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (126,'groupomania@gmail.com','Groupomania','Administrateur','Modo','$2b$10$W7Dvb12QLJ/tgpOyKCIq8eYYWsdT/ERlCdXmQukaRsv1wcM4Uz8OK','12-02-2022 à 12:14:13',1,'http://localhost:3000/images/11674789.jpg1644665898099.jpg',NULL),(127,'sebastien@gmail.com','lefranc','Sebastien','Seboush','$2b$10$qzIFN/3TMEHxYBfwlD1yJubyTIOC56/hYmhfFcEb/2JSwoBgpcQL2','12-02-2022 à 12:14:13',0,'http://localhost:3000/images/visage2.jpg1644665993954.jpg',NULL),(128,'faustine@gmail.com','Pounsiski','Faustine','PouPou','$2b$10$g5mJpAPxBEvGEvknsYQNMOS2uEHw1czDRdDr9vZNgiR952Az0YanC','12-02-2022 à 12:14:13',0,'http://localhost:3000/images/visage6.jpg1644666056010.jpg',NULL),(129,'pauline@gmail.com','Guimilo','Pauline','Pouka','$2b$10$KsW0Pla36gmVPd3g7gHisuAyHW00s5yFS90.G.SP87Jqk4dMSYfci','12-02-2022 à 12:14:13',0,'http://localhost:3000/images/visage3.jpg1644666434425.jpg',NULL);
+INSERT INTO `user` VALUES (131,'groupomania@gmail.com','Groupomania','Admin','Modo','$2b$10$MQqtgKhlIwtd/vty2RVI7OPj.38bMbTFHifqAUU/77KFAU/LfQQAG','13-02-2022 à 16:27:47',1,'http://localhost:3000/images/11674789.jpg1644766116135.jpg',NULL),(141,'faustine@gmail.com','namoli','Faustine','Faufau','$2b$10$dSQj64nrMlah4ggBcbIRrObhqqlOWPdLEQOX3A663751gOwN1Hukq','13-02-2022 à 16:44:23',0,'http://localhost:3000/images/visage6.jpg1644767761797.jpg',NULL),(142,'sebastien@gmail.com','Denime','Sebastien','Seboush','$2b$10$uqSbvSWgtrenmIGkCFo7lOvtj0DmZnks73q7ECaau.e7js5vNYGgq','13-02-2022 à 16:44:23',0,'http://localhost:3000/images/visage51515.jpg1644767931764.jpg',NULL),(143,'pauline@gmail.com','Jean','Pauline','Popo','$2b$10$F5r5RQrmJ3QHtNex8O68ZuEIA9x.z5CFQQm4wUJNWnOM6UF6Zhje6','13-02-2022 à 16:44:23',0,'http://localhost:3000/images/visage3.jpg1644768090825.jpg',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -143,4 +143,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-02-12 12:54:20
+-- Dump completed on 2022-02-13 17:05:29
