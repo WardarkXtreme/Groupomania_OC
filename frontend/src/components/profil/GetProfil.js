@@ -27,7 +27,6 @@ function DisplayProfil(){
                 mode: 'cors'
             }).then((result) => {
                 setProfil(result.data)
-                console.log(result.data)
             })
             .catch(err => console.log ({err}))
         };
@@ -57,7 +56,6 @@ function DisplayProfil(){
         else if(`${str.length}` < 5 || `${str.length}` > 10) {
             setChampVide(true)
         }
-        console.log(champVide)
     }
 
     const sendNewFile = (e) => {
@@ -93,7 +91,6 @@ function DisplayProfil(){
 
             const userId = window.location.search.slice(1);
             const jwt = sessionStorage.getItem('jwt')
-            console.log(textPseudo)
             axios({
                 url: "http://localhost:3000/api/auth/user/"+userId,
                 headers: {
@@ -111,6 +108,24 @@ function DisplayProfil(){
             })
             .catch((err) => console.log({err}))
         }
+    }   
+
+    const deleteProfile = () => {
+        const userId = window.location.search.slice(1);
+        const jwt = sessionStorage.getItem('jwt')
+        axios({
+            url: "http://localhost:3000/api/auth/user/del/"+userId,
+            headers: {
+                'Authorization': 'Bearer ' + jwt
+            },
+            mode: 'cors',
+            method: 'DELETE'
+        })
+        .then((res) => { 
+            window.alert("ce compte a bien été supprimé, à bientôt!")
+            window.location.href = '/'
+        })
+        .catch((err) => console.log({err}))
     }
 
     return (
@@ -133,7 +148,7 @@ function DisplayProfil(){
                                             setPutPreviewFile(previewFile)
                                             setNewFile(file)
                                         }}/>
-                                        <img className="publicationPicture" src={putPreviewFile}/>
+                                        <img alt='newpic' className="publicationPicture" src={putPreviewFile}/>
                                         <button onClick={sendNewFile}>Modifier</button>
                                     </div>
                                 }
@@ -166,6 +181,7 @@ function DisplayProfil(){
                                     <p>contact:</p>
                                     <p className='aqua'>{item.email}</p>
                                 </div>
+                                {(item.userID === JSON.parse(sessionStorage.getItem('user')) || admin === 1) && <button className='btnDelete' onClick={deleteProfile}>⚠️Suprimer le compte</button>}
                             </div>
                         </div>
                     ))}

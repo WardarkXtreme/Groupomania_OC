@@ -147,6 +147,13 @@
                 padding: 5px;
             }
         }
+        .btnDelete{
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 300px;
+        }
         .putPseudo{
             display: flex;
             align-items: center;
